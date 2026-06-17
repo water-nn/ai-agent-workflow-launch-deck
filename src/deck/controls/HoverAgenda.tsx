@@ -4,11 +4,12 @@ import type { Slide } from '../types'
 type HoverAgendaProps = {
   slides: Slide[]
   currentIndex: number
+  isPinned: boolean
+  onPinnedChange: (isPinned: boolean) => void
   onGoTo: (index: number) => void
 }
 
-export function HoverAgenda({ slides, currentIndex, onGoTo }: HoverAgendaProps) {
-  const [isPinned, setIsPinned] = useState(false)
+export function HoverAgenda({ slides, currentIndex, isPinned, onPinnedChange, onGoTo }: HoverAgendaProps) {
   const [isPointerOpen, setIsPointerOpen] = useState(false)
 
   return (
@@ -25,9 +26,13 @@ export function HoverAgenda({ slides, currentIndex, onGoTo }: HoverAgendaProps) 
           type="button"
           aria-pressed={isPinned}
           aria-label={isPinned ? '取消固定目录' : '固定目录'}
-          onClick={() => setIsPinned((value) => !value)}
+          title={isPinned ? '取消固定目录' : '固定目录'}
+          onClick={() => onPinnedChange(!isPinned)}
         >
-          {isPinned ? '锁' : '钉'}
+          <span className="agenda-pin-icon" aria-hidden="true">
+            {isPinned ? '●' : '⌖'}
+          </span>
+          <span className="agenda-pin-text">{isPinned ? 'Pinned' : 'Pin'}</span>
         </button>
       </div>
       <div className="agenda-panel">

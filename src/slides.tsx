@@ -227,7 +227,7 @@ export const slides: Slide[] = [
         <SlideHeader eyebrow="Data Story A" title="示例数据：Agent 工作流减少的是来回切换" />
         <div className="data-grid">
           <BarChartBlock
-            title="传统流程 vs Agent 工作流"
+            title="同一条任务链路，Agent 工作流显著减少折返"
             data={[
               { label: '总耗时', traditional: 100, agent: 46, unit: '%' },
               { label: '重复操作', traditional: 88, agent: 28, unit: '%' },
@@ -249,7 +249,7 @@ export const slides: Slide[] = [
         <SlideHeader eyebrow="Data Story B" title="覆盖范围从“写一段话”扩展到“完成一条链路”" />
         <div className="coverage-grid">
           <HorizontalBarBlock
-            title="典型任务覆盖潜力"
+            title="八类任务正在从单点能力走向链路覆盖"
             data={[
               { label: '写作', value: 92 },
               { label: '代码', value: 86 },
@@ -262,12 +262,12 @@ export const slides: Slide[] = [
             ]}
           />
           <DonutChartBlock
-            title="能力域组成"
+            title="覆盖不再依赖单点，而是能力组合"
             data={[
-              { label: '内容', value: 24, color: '#d7b46a' },
-              { label: '代码', value: 18, color: '#77c7c2' },
+              { label: '内容', value: 24, color: 'var(--gold)' },
+              { label: '代码', value: 18, color: 'var(--cyan)' },
               { label: '文件', value: 16, color: '#9ea7b8' },
-              { label: '发布', value: 14, color: '#7dbb86' },
+              { label: '发布', value: 14, color: 'var(--green)' },
               { label: '协作', value: 12, color: '#b6a28a' },
               { label: '验证', value: 16, color: '#e2d6c4' },
             ]}
@@ -315,7 +315,7 @@ export const slides: Slide[] = [
         <SlideHeader eyebrow="Quality System" title="质量不是最后检查一次，而是每一步都有闸门" />
         <div className="quality-grid">
           <DataTableBlock
-            title="发布前控制点"
+            title="每一步都需要一个可验证的质量闸门"
             columns={['阶段', '检查项', '输出']}
             rows={[
               ['Build', '类型与构建', '可运行版本'],
@@ -327,7 +327,7 @@ export const slides: Slide[] = [
             ]}
           />
           <LineChartBlock
-            title="质量闸门通过率"
+            title="质量通过率随闸门逐步抬升"
             points={[
               { label: '草稿', value: 42 },
               { label: '构建', value: 66 },

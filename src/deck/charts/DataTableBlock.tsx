@@ -6,7 +6,7 @@ type DataTableBlockProps = {
 
 export function DataTableBlock({ title, columns, rows }: DataTableBlockProps) {
   return (
-    <article className="chart-card table-card">
+    <article className="chart-card table-card table-enter">
       <div className="chart-head">
         <h3>{title}</h3>
         <span className="chart-note">控制点用于降低自动化误差</span>

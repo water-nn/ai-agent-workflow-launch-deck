@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 type BarDatum = {
   label: string
   traditional: number
@@ -12,9 +14,22 @@ type BarChartBlockProps = {
 
 export function BarChartBlock({ title, data }: BarChartBlockProps) {
   const max = Math.max(...data.flatMap((item) => [item.traditional, item.agent]))
+  const [entered, setEntered] = useState(false)
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduceMotion) {
+      setEntered(true)
+      return
+    }
+
+    setEntered(false)
+    const timer = window.setTimeout(() => setEntered(true), 80)
+    return () => window.clearTimeout(timer)
+  }, [data])
 
   return (
-    <article className="chart-card">
+    <article className={`chart-card ${entered ? 'chart-entered' : ''}`}>
       <div className="chart-head">
         <h3>{title}</h3>
         <div className="chart-legend">
@@ -27,11 +42,14 @@ export function BarChartBlock({ title, data }: BarChartBlockProps) {
           <div className="bar-row" key={item.label}>
             <div className="bar-label">{item.label}</div>
             <div className="bar-track" aria-label={`${item.label} 传统 ${item.traditional} Agent ${item.agent}`}>
-              <span className="bar bar-traditional" style={{ width: `${(item.traditional / max) * 100}%` }}>
+              <span
+                className="bar bar-traditional"
+                style={{ width: entered ? `${(item.traditional / max) * 100}%` : '0%' }}
+              >
                 {item.traditional}
                 {item.unit}
               </span>
-              <span className="bar bar-agent" style={{ width: `${(item.agent / max) * 100}%` }}>
+              <span className="bar bar-agent" style={{ width: entered ? `${(item.agent / max) * 100}%` : '0%' }}>
                 {item.agent}
                 {item.unit}
               </span>

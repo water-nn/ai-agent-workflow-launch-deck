@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 type Point = {
   label: string
   value: number
@@ -10,6 +12,7 @@ type LineChartBlockProps = {
 }
 
 export function LineChartBlock({ title, points, suffix = '%' }: LineChartBlockProps) {
+  const [entered, setEntered] = useState(false)
   const max = Math.max(...points.map((point) => point.value), 100)
   const width = 720
   const height = 280
@@ -24,8 +27,20 @@ export function LineChartBlock({ title, points, suffix = '%' }: LineChartBlockPr
   })
   const path = coordinates.map((point, index) => `${index === 0 ? 'M' : 'L'} ${point.x} ${point.y}`).join(' ')
 
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduceMotion) {
+      setEntered(true)
+      return
+    }
+
+    setEntered(false)
+    const timer = window.setTimeout(() => setEntered(true), 80)
+    return () => window.clearTimeout(timer)
+  }, [points])
+
   return (
-    <article className="chart-card line-chart-card">
+    <article className={`chart-card line-chart-card ${entered ? 'chart-entered' : ''}`}>
       <div className="chart-head">
         <h3>{title}</h3>
         <span className="chart-note">示例数据，用于表达趋势</span>
@@ -43,7 +58,7 @@ export function LineChartBlock({ title, points, suffix = '%' }: LineChartBlockPr
             </g>
           )
         })}
-        <path d={path} className="line-chart-path" />
+        <path d={path} className="line-chart-path" pathLength="1" />
         {coordinates.map((point) => (
           <g key={point.label}>
             <circle cx={point.x} cy={point.y} r="8" className="line-chart-dot" />

@@ -30,6 +30,54 @@ src/slides.tsx
 https://water-nn.github.io/ai-agent-workflow-launch-deck/
 ```
 
+## 主题和色调
+
+默认主题是 `editorial`，默认色调是 `Obsidian Champagne / 黑曜香槟`。
+
+可视化主题：
+
+```text
+https://water-nn.github.io/ai-agent-workflow-launch-deck/?theme=visual
+```
+
+石墨极光色调：
+
+```text
+https://water-nn.github.io/ai-agent-workflow-launch-deck/?tone=aurora
+```
+
+可视化主题 + 石墨极光：
+
+```text
+https://water-nn.github.io/ai-agent-workflow-launch-deck/?theme=visual&tone=aurora
+```
+
+当前项目已实现：
+
+- `tone=champagne`：Obsidian Champagne / 黑曜香槟，适合高级发布会和正式路演。
+- `tone=aurora`：Graphite Aurora / 石墨极光，适合 AI Agent、系统图和技术架构。
+
+规划中的 tone 名称还包括：Ink Cyan / 墨黑青蓝、Velvet Burgundy / 丝绒酒红、Porcelain Editorial / 象牙杂志、Sandstone Gallery / 沙岩展厅、Mono Museum / 黑白美术馆、Signal Lime / 信号青柠。
+
+## 导航交互
+
+左侧 Agenda 默认是窄导航栏。鼠标 hover 时，它会作为半透明浮层展开，不会推动主舞台，也不会让幻灯片跳动。
+
+点击底部 `Pin` 控件后，Agenda 会固定展开。只有固定状态下，主舞台才会向右轻微缩进并在剩余空间内重新居中。再次点击 `Pinned` 可取消固定。
+
+## 视觉和动效
+
+动态背景强度在 `src/styles.css` 顶部变量中调整：
+
+```css
+--bg-motion-opacity
+--bg-glow-opacity
+--bg-sweep-opacity
+--bg-particle-opacity
+```
+
+图表入场动效在 `src/deck/charts/` 和 `src/deck/controls/Progress.tsx` 中实现。进入图表页时，柱状图、横向条、折线、环形图、数字指标和进度条会播放入场动效。系统开启 reduced motion 时，动效会降低或直接显示最终值。
+
 ## 更新远程页面
 
 ```bash
@@ -52,3 +100,5 @@ push 后 GitHub Actions 会自动更新 GitHub Pages。
 ```ts
 base: '/ai-agent-workflow-launch-deck/'
 ```
+
+图表页不要堆太多组件。每页应服务一个数据结论，保留足够留白，避免 dashboard 拼贴感。左右布局要看视觉重量，而不是机械地一边文字一边卡片。装饰性英文标签必须放在 safe area，不能压住正文、图表或卡片。

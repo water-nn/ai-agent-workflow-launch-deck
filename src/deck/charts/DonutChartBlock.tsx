@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 type DonutDatum = {
   label: string
   value: number
@@ -13,9 +15,22 @@ const circleLength = 100
 
 export function DonutChartBlock({ title, data }: DonutChartBlockProps) {
   let offset = 0
+  const [entered, setEntered] = useState(false)
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduceMotion) {
+      setEntered(true)
+      return
+    }
+
+    setEntered(false)
+    const timer = window.setTimeout(() => setEntered(true), 80)
+    return () => window.clearTimeout(timer)
+  }, [data])
 
   return (
-    <article className="chart-card donut-chart-card">
+    <article className={`chart-card donut-chart-card ${entered ? 'chart-entered' : ''}`}>
       <div className="chart-head">
         <h3>{title}</h3>
         <span className="chart-note">覆盖度为演示假设值</span>
@@ -24,7 +39,7 @@ export function DonutChartBlock({ title, data }: DonutChartBlockProps) {
         <svg className="donut-chart" viewBox="0 0 140 140" role="img" aria-label={title}>
           <circle cx="70" cy="70" r="42" className="donut-base" />
           {data.map((item) => {
-            const dash = `${item.value} ${circleLength - item.value}`
+            const dash = entered ? `${item.value} ${circleLength - item.value}` : `0 ${circleLength}`
             const segment = (
               <circle
                 key={item.label}
