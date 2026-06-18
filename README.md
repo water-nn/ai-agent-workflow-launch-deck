@@ -1,10 +1,12 @@
 # AI Agent 工作流发布会
 
-一套网页式 PPT / HTML Presentation Deck，主题是：
+一套网页式 PPT / HTML Presentation Deck，正式主题是：
 
 **AI Agent 工作流发布会：从工具调用到自动化协作系统**
 
 它使用 React + Vite + TypeScript 构建，支持键盘翻页、全屏、hover 目录、进度条、动态背景、图表组件、本地双击预览、浏览器打印 PDF，以及 GitHub Pages 部署。
+
+默认版本必须服务一场高级科技产品发布会：讲清楚 Agent Skill 如何扩展 Codex，把一次性任务变成可复用工作流，并通过 GitHub、`PROJECT_STATUS.md` 和 GitHub Pages 支持跨设备接续。
 
 ## 本地预览
 
@@ -32,25 +34,33 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 
 ## 主题和色调
 
-默认主题是 `editorial`，默认色调是 `Obsidian Champagne / 黑曜香槟`。
+默认推荐版是：
 
-默认风格是稳定推荐版：**Default Premium Dark Tech Baseline / 高级深色科技视觉基准**。它优先保证统一、克制、清晰和发布会质感。
+```text
+Original Dark Tech Baseline
+```
 
-`visual` 与 `aurora` 是实验增强版，用于探索更强的系统图、极光动效和技术感，不应影响默认主题。
+默认主题是 `editorial`，默认色调是 `Deep Slate Tech / 深石墨科技`。它使用深石墨 / 深蓝黑背景、冷灰正文和低饱和青蓝主强调色。
 
-可视化主题，实验增强版：
+可选黑金色调：
+
+```text
+https://water-nn.github.io/ai-agent-workflow-launch-deck/?tone=champagne
+```
+
+实验增强版可视化主题：
 
 ```text
 https://water-nn.github.io/ai-agent-workflow-launch-deck/?theme=visual
 ```
 
-石墨极光色调，实验增强版：
+实验增强版石墨极光色调：
 
 ```text
 https://water-nn.github.io/ai-agent-workflow-launch-deck/?tone=aurora
 ```
 
-可视化主题 + 石墨极光，实验增强版：
+实验增强版可视化主题 + 石墨极光：
 
 ```text
 https://water-nn.github.io/ai-agent-workflow-launch-deck/?theme=visual&tone=aurora
@@ -58,8 +68,11 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/?theme=visual&tone=auro
 
 当前项目已实现：
 
-- `tone=champagne`：Obsidian Champagne / 黑曜香槟，当前默认稳定推荐版。
-- `tone=aurora`：Graphite Aurora / 石墨极光，实验增强版，适合 AI Agent、系统图和技术架构。
+- `tone=slate`：Deep Slate Tech / 深石墨科技，正式推荐版，也是无参数默认链接。
+- `tone=champagne`：Obsidian Champagne / 黑曜香槟，只作为可选黑金实验版。
+- `tone=aurora`：Graphite Aurora / 石墨极光，只作为实验增强版。
+
+`?tone=champagne`、`?theme=visual` 与 `?tone=aurora` 不能反向影响默认链接。默认链接永远优先保证冷静、统一、可演讲。
 
 规划中的 tone 名称还包括：Ink Cyan / 墨黑青蓝、Velvet Burgundy / 丝绒酒红、Porcelain Editorial / 象牙杂志、Sandstone Gallery / 沙岩展厅、Mono Museum / 黑白美术馆、Signal Lime / 信号青柠。
 
@@ -67,7 +80,7 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/?theme=visual&tone=auro
 
 左侧 Agenda 默认是窄导航栏。鼠标 hover 时，它会作为半透明浮层展开，不会推动主舞台，也不会让幻灯片跳动。
 
-点击底部 `Pin` 控件后，Agenda 会固定展开。只有固定状态下，主舞台才会向右轻微缩进并在剩余空间内重新居中。再次点击 `Pinned` 可取消固定。
+点击底部 `PIN` 控件后，Agenda 会固定展开。只有固定状态下，主舞台才会向右轻微缩进并在剩余空间内重新居中。固定后按钮显示 `ON`，再次点击可取消固定。
 
 ## 视觉和动效
 
@@ -92,6 +105,16 @@ git push
 ```
 
 push 后 GitHub Actions 会自动更新 GitHub Pages。
+
+## 多设备交接
+
+跨设备继续项目时，先读：
+
+```text
+PROJECT_STATUS.md
+```
+
+它记录当前主题、稳定链接、默认视觉基线、六幕叙事结构和下一次接手建议。
 
 ## 导出 PDF
 

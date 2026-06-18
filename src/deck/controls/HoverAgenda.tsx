@@ -32,7 +32,7 @@ export function HoverAgenda({ slides, currentIndex, isPinned, onPinnedChange, on
           <span className="agenda-pin-icon" aria-hidden="true">
             {isPinned ? '●' : '⌖'}
           </span>
-          <span className="agenda-pin-text">{isPinned ? 'Pinned' : 'Pin'}</span>
+          <span className="agenda-pin-text">{isPinned ? 'ON' : 'PIN'}</span>
         </button>
       </div>
       <div className="agenda-panel">
