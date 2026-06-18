@@ -35,6 +35,33 @@
   --bg-sweep-opacity: 0.58;
   --bg-particle-opacity: 0.42;
   --chart-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  /*
+    Default Premium Dark Tech Baseline:
+    one stable default visual system first; theme/tone variants may extend it
+    but must not pollute the default editorial + champagne experience.
+  */
+  --baseline-bg-0: #040404;
+  --baseline-bg-1: #0b0a09;
+  --baseline-bg-2: #15120e;
+  --baseline-text: #f5efe5;
+  --baseline-muted: #b8afa2;
+  --baseline-soft: #827b71;
+  --baseline-accent: #d6b36b;
+  --baseline-accent-soft: rgba(214, 179, 107, 0.18);
+  --baseline-support: #7aa9a4;
+  --baseline-support-soft: rgba(122, 169, 164, 0.14);
+  --baseline-panel-rgb: 18, 18, 16;
+  --baseline-panel: rgba(18, 18, 16, 0.72);
+  --baseline-panel-strong: rgba(27, 26, 23, 0.9);
+  --baseline-line: rgba(245, 239, 229, 0.13);
+  --baseline-shadow: 0 28px 90px rgba(0, 0, 0, 0.5);
+  --chart-primary: var(--baseline-accent);
+  --chart-primary-soft: rgba(214, 179, 107, 0.62);
+  --chart-secondary: var(--baseline-support);
+  --chart-secondary-soft: rgba(122, 169, 164, 0.42);
+  --chart-neutral: rgba(158, 152, 142, 0.58);
+  --chart-warm: #c8ad78;
+  --chart-quiet: #d8cfc0;
   --slide-pad: clamp(40px, 4.3vw, 74px);
   --title: clamp(44px, 4.5vw, 72px);
   --cover-title: clamp(58px, 7vw, 118px);
@@ -1846,4 +1873,242 @@ td {
     box-shadow: none;
     page-break-after: always;
   }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Default Premium Dark Tech Baseline                                         */
+/* -------------------------------------------------------------------------- */
+
+.deck-app.theme-editorial.tone-champagne {
+  --ink: var(--baseline-text);
+  --muted: var(--baseline-muted);
+  --soft: var(--baseline-soft);
+  --gold: var(--baseline-accent);
+  --gold-soft: var(--baseline-accent-soft);
+  --cyan: var(--baseline-support);
+  --green: var(--baseline-support);
+  --accent-rgb: 214, 179, 107;
+  --accent-2-rgb: 122, 169, 164;
+  --bg-base-0: var(--baseline-bg-0);
+  --bg-base-1: var(--baseline-bg-1);
+  --bg-base-2: var(--baseline-bg-2);
+  --panel-rgb: var(--baseline-panel-rgb);
+  --panel: var(--baseline-panel);
+  --panel-strong: var(--baseline-panel-strong);
+  --line: var(--baseline-line);
+  --shadow: var(--baseline-shadow);
+  --bg-motion-opacity: 0.48;
+  --bg-glow-opacity: 0.44;
+  --bg-sweep-opacity: 0.3;
+  --bg-particle-opacity: 0.18;
+  background: var(--baseline-bg-0);
+}
+
+.deck-app.theme-editorial.tone-champagne .deck-bg-base {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(214, 179, 107, 0.13), transparent 30%),
+    radial-gradient(circle at 84% 76%, rgba(122, 169, 164, 0.08), transparent 34%),
+    linear-gradient(135deg, var(--baseline-bg-0) 0%, var(--baseline-bg-1) 54%, var(--baseline-bg-2) 100%);
+}
+
+.deck-app.theme-editorial.tone-champagne .deck-bg-grid {
+  opacity: 0.18;
+  background-image:
+    linear-gradient(rgba(245, 239, 229, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 239, 229, 0.055) 1px, transparent 1px);
+}
+
+.deck-app.theme-editorial.tone-champagne .deck-bg-aurora-a {
+  background: linear-gradient(100deg, rgba(214, 179, 107, 0.34), rgba(122, 169, 164, 0.12), transparent);
+}
+
+.deck-app.theme-editorial.tone-champagne .deck-bg-aurora-b {
+  background: linear-gradient(120deg, transparent, rgba(216, 207, 192, 0.11), rgba(122, 169, 164, 0.12));
+}
+
+.deck-app.theme-editorial.tone-champagne .deck-bg-spotlight,
+.deck-app.theme-editorial.tone-champagne .deck-bg-command-sweep {
+  mix-blend-mode: screen;
+}
+
+.deck-app.theme-editorial.tone-champagne .deck-bg-particles span {
+  width: 3px;
+  height: 3px;
+  background: rgba(214, 179, 107, 0.48);
+  box-shadow: 0 0 14px rgba(214, 179, 107, 0.28);
+}
+
+.deck-app.theme-editorial.tone-champagne .deck-bg-particles span:nth-child(3n) {
+  background: rgba(122, 169, 164, 0.38);
+  box-shadow: 0 0 14px rgba(122, 169, 164, 0.22);
+}
+
+.deck-app.theme-editorial.tone-champagne .slide-frame {
+  border-color: rgba(245, 239, 229, 0.12);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.035), transparent 30%),
+    radial-gradient(circle at 82% 18%, rgba(214, 179, 107, 0.08), transparent 34%),
+    rgba(8, 8, 7, 0.8);
+  box-shadow: 0 32px 120px rgba(0, 0, 0, 0.58), inset 0 1px 0 rgba(245, 239, 229, 0.05);
+}
+
+.deck-app.theme-editorial.tone-champagne .slide-frame::before {
+  background:
+    linear-gradient(90deg, rgba(214, 179, 107, 0.085), transparent 20%, transparent 84%, rgba(122, 169, 164, 0.045)),
+    radial-gradient(circle at 0% 100%, rgba(214, 179, 107, 0.075), transparent 24%);
+}
+
+.deck-app.theme-editorial.tone-champagne .hover-agenda,
+.deck-app.theme-editorial.tone-champagne .top-controls,
+.deck-app.theme-editorial.tone-champagne .progress-shell {
+  color: var(--baseline-text);
+}
+
+.deck-app.theme-editorial.tone-champagne .agenda-panel,
+.deck-app.theme-editorial.tone-champagne .control-button,
+.deck-app.theme-editorial.tone-champagne .agenda-item,
+.deck-app.theme-editorial.tone-champagne .glass-card,
+.deck-app.theme-editorial.tone-champagne .chart-card,
+.deck-app.theme-editorial.tone-champagne .metric-card,
+.deck-app.theme-editorial.tone-champagne .capability-card,
+.deck-app.theme-editorial.tone-champagne .roadmap-card,
+.deck-app.theme-editorial.tone-champagne .decision-card,
+.deck-app.theme-editorial.tone-champagne .problem-card,
+.deck-app.theme-editorial.tone-champagne .risk-card {
+  border-color: var(--baseline-line);
+  background:
+    linear-gradient(145deg, rgba(245, 239, 229, 0.055), rgba(245, 239, 229, 0.02)),
+    rgba(var(--baseline-panel-rgb), 0.66);
+  box-shadow: 0 18px 56px rgba(0, 0, 0, 0.3);
+}
+
+.deck-app.theme-editorial.tone-champagne .control-button:hover:not(:disabled),
+.deck-app.theme-editorial.tone-champagne .agenda-item:hover,
+.deck-app.theme-editorial.tone-champagne .glass-card:hover,
+.deck-app.theme-editorial.tone-champagne .problem-card:hover,
+.deck-app.theme-editorial.tone-champagne .risk-card:hover,
+.deck-app.theme-editorial.tone-champagne .decision-card:hover,
+.deck-app.theme-editorial.tone-champagne .capability-card:hover {
+  border-color: rgba(214, 179, 107, 0.38);
+  background:
+    linear-gradient(145deg, rgba(214, 179, 107, 0.09), rgba(245, 239, 229, 0.025)),
+    rgba(var(--baseline-panel-rgb), 0.78);
+  box-shadow: 0 24px 72px rgba(0, 0, 0, 0.34), 0 0 34px rgba(214, 179, 107, 0.08);
+}
+
+.deck-app.theme-editorial.tone-champagne .control-button:focus-visible,
+.deck-app.theme-editorial.tone-champagne .agenda-item:focus-visible,
+.deck-app.theme-editorial.tone-champagne .tool-node:focus-visible {
+  outline: 2px solid rgba(214, 179, 107, 0.72);
+  outline-offset: 3px;
+}
+
+.deck-app.theme-editorial.tone-champagne .control-button-accent,
+.deck-app.theme-editorial.tone-champagne .agenda-item-active,
+.deck-app.theme-editorial.tone-champagne .agenda-pin[aria-pressed="true"] {
+  color: #171109;
+  border-color: rgba(214, 179, 107, 0.78);
+  background: linear-gradient(135deg, #d6b36b, #ead3a2);
+  box-shadow: 0 0 26px rgba(214, 179, 107, 0.2);
+}
+
+.deck-app.theme-editorial.tone-champagne .progress-track {
+  background: rgba(245, 239, 229, 0.09);
+}
+
+.deck-app.theme-editorial.tone-champagne .progress-fill {
+  background: linear-gradient(90deg, var(--baseline-accent), #e8d1a2);
+  box-shadow: 0 0 20px rgba(214, 179, 107, 0.34);
+}
+
+.deck-app.theme-editorial.tone-champagne .cover-orbit,
+.deck-app.theme-editorial.tone-champagne .collab-center,
+.deck-app.theme-editorial.tone-champagne .level-card-high,
+.deck-app.theme-editorial.tone-champagne .roadmap-card:nth-child(4) {
+  border-color: rgba(214, 179, 107, 0.32);
+}
+
+.deck-app.theme-editorial.tone-champagne .level-card-mid,
+.deck-app.theme-editorial.tone-champagne .roadmap-card:nth-child(3) {
+  border-color: rgba(122, 169, 164, 0.2);
+}
+
+.deck-app.theme-editorial.tone-champagne .arch-core,
+.deck-app.theme-editorial.tone-champagne .tool-core,
+.deck-app.theme-editorial.tone-champagne .flow-node span,
+.deck-app.theme-editorial.tone-champagne th {
+  color: #171109;
+  background: linear-gradient(135deg, #d6b36b, #ead3a2);
+  box-shadow: 0 0 46px rgba(214, 179, 107, 0.18);
+}
+
+.deck-app.theme-editorial.tone-champagne .metric-card-cyan .metric-label,
+.deck-app.theme-editorial.tone-champagne .metric-card-green .metric-label {
+  color: var(--baseline-support);
+}
+
+.deck-app.theme-editorial.tone-champagne .legend-traditional,
+.deck-app.theme-editorial.tone-champagne .bar-traditional {
+  background: var(--chart-neutral);
+}
+
+.deck-app.theme-editorial.tone-champagne .legend-agent,
+.deck-app.theme-editorial.tone-champagne .bar-agent,
+.deck-app.theme-editorial.tone-champagne .horizontal-bar-track strong {
+  background: linear-gradient(90deg, var(--chart-primary), #e9d1a1);
+}
+
+.deck-app.theme-editorial.tone-champagne .horizontal-bar-track {
+  background: rgba(245, 239, 229, 0.075);
+}
+
+.deck-app.theme-editorial.tone-champagne .line-chart-path {
+  stroke: var(--chart-primary);
+  filter: drop-shadow(0 0 9px rgba(214, 179, 107, 0.24));
+}
+
+.deck-app.theme-editorial.tone-champagne .line-chart-dot {
+  fill: #e8d1a2;
+  stroke: #0b0a09;
+}
+
+.deck-app.theme-editorial.tone-champagne .donut-base {
+  stroke: rgba(245, 239, 229, 0.09);
+}
+
+.deck-app.theme-editorial.tone-champagne .chart-grid-line {
+  stroke: rgba(245, 239, 229, 0.105);
+}
+
+.deck-app.theme-editorial.tone-champagne .chart-axis-label,
+.deck-app.theme-editorial.tone-champagne .chart-note,
+.deck-app.theme-editorial.tone-champagne .chart-legend,
+.deck-app.theme-editorial.tone-champagne .donut-legend-item,
+.deck-app.theme-editorial.tone-champagne td {
+  color: var(--baseline-muted);
+  fill: var(--baseline-muted);
+}
+
+.deck-app.theme-editorial.tone-champagne .chart-value-label,
+.deck-app.theme-editorial.tone-champagne .donut-center-value,
+.deck-app.theme-editorial.tone-champagne .donut-legend-item strong {
+  color: var(--baseline-text);
+  fill: var(--baseline-text);
+}
+
+.deck-app.theme-editorial.tone-champagne .pill,
+.deck-app.theme-editorial.tone-champagne .cover-meta .pill {
+  border-color: rgba(214, 179, 107, 0.24);
+  background: rgba(214, 179, 107, 0.08);
+  color: var(--baseline-text);
+}
+
+.deck-app.theme-editorial.tone-champagne .tool-node {
+  border-color: rgba(245, 239, 229, 0.13);
+  background: rgba(var(--baseline-panel-rgb), 0.68);
+}
+
+.deck-app.theme-editorial.tone-champagne .tool-node:hover {
+  border-color: rgba(214, 179, 107, 0.36);
+  background: rgba(214, 179, 107, 0.1);
 }

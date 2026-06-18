@@ -264,12 +264,12 @@ export const slides: Slide[] = [
           <DonutChartBlock
             title="覆盖不再依赖单点，而是能力组合"
             data={[
-              { label: '内容', value: 24, color: 'var(--gold)' },
-              { label: '代码', value: 18, color: 'var(--cyan)' },
-              { label: '文件', value: 16, color: '#9ea7b8' },
-              { label: '发布', value: 14, color: 'var(--green)' },
-              { label: '协作', value: 12, color: '#b6a28a' },
-              { label: '验证', value: 16, color: '#e2d6c4' },
+              { label: '内容', value: 24, color: 'var(--chart-primary)' },
+              { label: '代码', value: 18, color: 'var(--chart-secondary)' },
+              { label: '文件', value: 16, color: 'var(--chart-neutral)' },
+              { label: '发布', value: 14, color: 'var(--chart-primary-soft)' },
+              { label: '协作', value: 12, color: 'var(--chart-secondary-soft)' },
+              { label: '验证', value: 16, color: 'var(--chart-quiet)' },
             ]}
           />
         </div>

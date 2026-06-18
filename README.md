@@ -34,19 +34,23 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 
 默认主题是 `editorial`，默认色调是 `Obsidian Champagne / 黑曜香槟`。
 
-可视化主题：
+默认风格是稳定推荐版：**Default Premium Dark Tech Baseline / 高级深色科技视觉基准**。它优先保证统一、克制、清晰和发布会质感。
+
+`visual` 与 `aurora` 是实验增强版，用于探索更强的系统图、极光动效和技术感，不应影响默认主题。
+
+可视化主题，实验增强版：
 
 ```text
 https://water-nn.github.io/ai-agent-workflow-launch-deck/?theme=visual
 ```
 
-石墨极光色调：
+石墨极光色调，实验增强版：
 
 ```text
 https://water-nn.github.io/ai-agent-workflow-launch-deck/?tone=aurora
 ```
 
-可视化主题 + 石墨极光：
+可视化主题 + 石墨极光，实验增强版：
 
 ```text
 https://water-nn.github.io/ai-agent-workflow-launch-deck/?theme=visual&tone=aurora
@@ -54,8 +58,8 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/?theme=visual&tone=auro
 
 当前项目已实现：
 
-- `tone=champagne`：Obsidian Champagne / 黑曜香槟，适合高级发布会和正式路演。
-- `tone=aurora`：Graphite Aurora / 石墨极光，适合 AI Agent、系统图和技术架构。
+- `tone=champagne`：Obsidian Champagne / 黑曜香槟，当前默认稳定推荐版。
+- `tone=aurora`：Graphite Aurora / 石墨极光，实验增强版，适合 AI Agent、系统图和技术架构。
 
 规划中的 tone 名称还包括：Ink Cyan / 墨黑青蓝、Velvet Burgundy / 丝绒酒红、Porcelain Editorial / 象牙杂志、Sandstone Gallery / 沙岩展厅、Mono Museum / 黑白美术馆、Signal Lime / 信号青柠。
 
