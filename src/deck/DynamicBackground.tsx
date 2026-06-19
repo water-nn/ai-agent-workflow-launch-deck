@@ -3,9 +3,11 @@ export function DynamicBackground() {
     <div className="deck-background" aria-hidden="true">
       <div className="deck-bg-base" />
       <div className="deck-bg-depth" />
+      <div className="deck-bg-halo" />
       <div className="deck-bg-grid" />
       <div className="deck-bg-aurora deck-bg-aurora-a" />
       <div className="deck-bg-aurora deck-bg-aurora-b" />
+      <div className="deck-bg-ribbon" />
       <div className="deck-bg-spotlight" />
       <div className="deck-bg-command-sweep" />
       <div className="deck-bg-particles">

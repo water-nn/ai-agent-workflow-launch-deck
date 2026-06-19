@@ -37,12 +37,12 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 默认推荐版是：
 
 ```text
-Default Premium Dark Tech Baseline
+Expressive Premium Dark Tech
 ```
 
-默认主题是 `editorial`，默认色调是 `Default Premium Dark Tech / Rich Dark Tech`。它使用深石墨 / 深蓝黑多层底色、冷灰正文、青蓝主强调色、电蓝辅助强调、低饱和紫蓝空间光、teal 质量色、少量 amber 重点提示，以及 4-6 个协调图表色。
+默认主题是 `editorial`，默认色调是 `Expressive Premium Dark Tech / Advanced AI Launch Visual System`。它使用 deep navy / graphite blue 多层底色、冷灰正文、aqua cyan 主强调色、deep electric blue 辅助强调、muted indigo 空间光、teal 质量色、少量 amber 重点提示，以及 4-6 个协调图表色。
 
-默认视觉必须像成熟科技产品发布会，而不是普通 dashboard、随机 neon 模板、黑金金融路演或冷灰网页模板。`visual` / `aurora` 只作为实验增强版，不能反向影响默认主题。
+默认视觉必须像成熟 AI 产品发布会，而不是普通 dashboard、随机 neon 模板、黑金金融路演或冷灰网页模板。本轮已从偏沉闷的深色模板，重做为更自由、更有空间光感的 Expressive Premium Dark Tech。`visual` / `aurora` 只作为实验增强版，不能反向影响默认主题。
 
 可选黑金色调：
 
@@ -70,11 +70,11 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/?theme=visual&tone=auro
 
 当前项目已实现：
 
-- `tone=slate`：Deep Slate Tech / 深石墨科技，正式推荐版，也是无参数默认链接。
+- `tone=slate`：Expressive Premium Dark Tech / 高级 AI 发布会深色科技，正式推荐版，也是无参数默认链接。
 - `tone=champagne`：Obsidian Champagne / 黑曜香槟，只作为可选黑金实验版。
 - `tone=aurora`：Graphite Aurora / 石墨极光，只作为实验增强版。
 
-`?tone=champagne`、`?theme=visual` 与 `?tone=aurora` 不能反向影响默认链接。默认链接永远优先保证色彩层次丰富但统一、不是黑金主导、也不是冷灰单调。
+`?tone=champagne`、`?theme=visual` 与 `?tone=aurora` 不能反向影响默认链接。默认链接永远优先保证色彩层次丰富但统一、不是黑金主导、不是冷灰单调，也不是被 token 规则限制住的模板感。
 
 规划中的 tone 名称还包括：Ink Cyan / 墨黑青蓝、Velvet Burgundy / 丝绒酒红、Porcelain Editorial / 象牙杂志、Sandstone Gallery / 沙岩展厅、Mono Museum / 黑白美术馆、Signal Lime / 信号青柠。
 
@@ -114,7 +114,9 @@ Pinned Agenda 是双栏布局模式，不是整张幻灯片缩小模式。固定
 --bg-particle-opacity
 ```
 
-默认背景使用多层 radial / conic / linear gradients 建立深色空间感，顶部、底部和左右边缘不能出现黑色硬边。卡片、按钮、Agenda item、图表卡和架构节点共享同一套 hover 语言：轻微上浮、surface 提亮、边框变细腻、低透明 glow 增强，并支持 `prefers-reduced-motion: reduce`。
+默认背景使用多层 radial / conic / linear gradients、超大 halo、斜向 ribbon、低透明网格和柔和 aurora 建立深色空间感。顶部、底部和左右边缘不能出现黑色硬边。卡片、按钮、Agenda item、图表卡和架构节点共享同一套 hover 语言：轻微上浮、surface 提亮、边框变细腻、低透明 glow 增强，并支持 `prefers-reduced-motion: reduce`。
+
+本轮视觉重设计参考了 `ui-ux-pro-max` 和 `frontend-design`：优先以真实观感判断是否像高级 AI 产品发布会，而不是机械检查 token 是否存在。
 
 图表入场动效在 `src/deck/charts/` 和 `src/deck/controls/Progress.tsx` 中实现。进入图表页时，柱状图、横向条、折线、环形图、数字指标和进度条会播放入场动效。系统开启 reduced motion 时，动效会降低或直接显示最终值。
 
