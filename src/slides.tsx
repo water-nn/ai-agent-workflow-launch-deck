@@ -53,7 +53,7 @@ export const slides: Slide[] = [
     ...slideMeta[0],
     content: (
       <div className="cover-layout">
-        <div className="cover-kicker">Rich Dark Tech Baseline</div>
+        <div className="cover-kicker">Default Premium Dark Tech</div>
         <h1>AI Agent 工作流发布会</h1>
         <p>从工具调用到自动化协作系统</p>
         <div className="cover-orbit">
@@ -222,7 +222,7 @@ export const slides: Slide[] = [
           <HorizontalBarBlock title="html-presentation-deck 的默认能力覆盖" data={deckCapabilities} />
           <div className="metric-column">
             <MetricCard label="Stable URL" value="Live" detail="默认公开链接保持为 GitHub Pages 推荐版。" tone="green" />
-            <MetricCard label="Default theme" value="Rich" detail="Rich Dark Tech Baseline 必须优先稳定。" tone="warm" />
+            <MetricCard label="Default theme" value="Premium" detail="Default Premium Dark Tech Baseline 必须优先稳定。" tone="warm" />
           </div>
         </div>
       </div>
@@ -260,7 +260,7 @@ export const slides: Slide[] = [
             rows={[
               ['当前主题', 'AI Agent 工作流发布会', '避免后续偏成泛技术文档'],
               ['稳定链接', 'GitHub Pages URL', '让设备共享同一预览入口'],
-              ['默认基线', 'Rich Dark Tech', '保护丰富但克制的深色科技演示风格'],
+              ['默认基线', 'Premium Dark Tech', '保护丰富但克制的深色科技演示风格'],
               ['下一步', '待验证、待部署、待设计 QA', '让 Codex 接手即可继续'],
             ]}
           />
@@ -332,7 +332,7 @@ export const slides: Slide[] = [
         <div className="roadmap">
           {[
             ['Phase 01', '内容结构化', '把主题、章节、页面观点和图表数据沉淀为更清晰的内容模型。'],
-            ['Phase 02', '视觉基线库', '默认 Original Dark Tech、实验 champagne / aurora、Design QA 检查表独立维护。'],
+            ['Phase 02', '视觉基线库', '默认 Premium Dark Tech、实验 champagne / aurora、Design QA 检查表独立维护。'],
             ['Phase 03', '导出与部署', '强化 PDF、GitHub Pages、离线预览与多设备交接的一致体验。'],
             ['Phase 04', '生产系统', '从生成一套 PPT，升级为持续迭代的网页式演示文稿流水线。'],
           ].map(([phase, title, detail]) => (

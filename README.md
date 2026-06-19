@@ -37,10 +37,12 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 默认推荐版是：
 
 ```text
-Rich Dark Tech Baseline
+Default Premium Dark Tech Baseline
 ```
 
-默认主题是 `editorial`，默认色调是 `Original Dark Tech Rich Palette / Rich Dark Tech`。它使用深石墨 / 深蓝黑背景、冷灰正文、青蓝主强调色、电蓝辅助强调、低饱和紫蓝空间光、teal 质量色、少量 amber 重点提示，以及 4-6 个协调图表色。
+默认主题是 `editorial`，默认色调是 `Default Premium Dark Tech / Rich Dark Tech`。它使用深石墨 / 深蓝黑多层底色、冷灰正文、青蓝主强调色、电蓝辅助强调、低饱和紫蓝空间光、teal 质量色、少量 amber 重点提示，以及 4-6 个协调图表色。
+
+默认视觉必须像成熟科技产品发布会，而不是普通 dashboard、随机 neon 模板、黑金金融路演或冷灰网页模板。`visual` / `aurora` 只作为实验增强版，不能反向影响默认主题。
 
 可选黑金色调：
 
@@ -82,11 +84,23 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/?theme=visual&tone=auro
 
 点击底部 `PIN` 控件后，Agenda 会固定展开。只有固定状态下，主舞台才会向右轻微缩进并在剩余空间内重新居中。固定后按钮显示 `ON`，再次点击可取消固定。
 
+Pinned Agenda 是双栏布局模式，不是整张幻灯片缩小模式。固定目录后，右侧舞台会在剩余空间里重新回流：网格、图表和卡片通过 responsive layout 适配，不能使用整体 `scale()` / `zoom` 把 16:9 画布压小。
+
 ## 视觉和动效
 
 动态背景强度在 `src/styles.css` 顶部变量中调整：
 
 ```css
+--surface-0
+--surface-1
+--surface-2
+--surface-3
+--surface-border
+--surface-glow
+--hover-surface
+--hover-border
+--hover-glow
+--hover-lift
 --color-accent-primary
 --color-accent-secondary
 --color-accent-tertiary
@@ -99,6 +113,8 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/?theme=visual&tone=auro
 --bg-sweep-opacity
 --bg-particle-opacity
 ```
+
+默认背景使用多层 radial / conic / linear gradients 建立深色空间感，顶部、底部和左右边缘不能出现黑色硬边。卡片、按钮、Agenda item、图表卡和架构节点共享同一套 hover 语言：轻微上浮、surface 提亮、边框变细腻、低透明 glow 增强，并支持 `prefers-reduced-motion: reduce`。
 
 图表入场动效在 `src/deck/charts/` 和 `src/deck/controls/Progress.tsx` 中实现。进入图表页时，柱状图、横向条、折线、环形图、数字指标和进度条会播放入场动效。系统开启 reduced motion 时，动效会降低或直接显示最终值。
 
