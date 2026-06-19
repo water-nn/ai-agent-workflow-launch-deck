@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 type DonutDatum = {
   label: string
   value: number
-  color: string
+  color?: string
 }
 
 type DonutChartBlockProps = {
@@ -12,6 +12,14 @@ type DonutChartBlockProps = {
 }
 
 const circleLength = 100
+const defaultPalette = [
+  'var(--chart-color-1)',
+  'var(--chart-color-2)',
+  'var(--chart-color-3)',
+  'var(--chart-color-4)',
+  'var(--chart-color-5)',
+  'var(--chart-color-6)',
+]
 
 export function DonutChartBlock({ title, data }: DonutChartBlockProps) {
   let offset = 0
@@ -38,8 +46,9 @@ export function DonutChartBlock({ title, data }: DonutChartBlockProps) {
       <div className="donut-layout">
         <svg className="donut-chart" viewBox="0 0 140 140" role="img" aria-label={title}>
           <circle cx="70" cy="70" r="42" className="donut-base" />
-          {data.map((item) => {
+          {data.map((item, index) => {
             const dash = entered ? `${item.value} ${circleLength - item.value}` : `0 ${circleLength}`
+            const color = item.color ?? defaultPalette[index % defaultPalette.length]
             const segment = (
               <circle
                 key={item.label}
@@ -47,7 +56,7 @@ export function DonutChartBlock({ title, data }: DonutChartBlockProps) {
                 cy="70"
                 r="42"
                 className="donut-segment"
-                stroke={item.color}
+                stroke={color}
                 strokeDasharray={dash}
                 strokeDashoffset={-offset}
               />
@@ -63,9 +72,9 @@ export function DonutChartBlock({ title, data }: DonutChartBlockProps) {
           </text>
         </svg>
         <div className="donut-legend">
-          {data.map((item) => (
+          {data.map((item, index) => (
             <div className="donut-legend-item" key={item.label}>
-              <span style={{ background: item.color }} />
+              <span style={{ background: item.color ?? defaultPalette[index % defaultPalette.length] }} />
               <strong>{item.label}</strong>
               <em>{item.value}%</em>
             </div>

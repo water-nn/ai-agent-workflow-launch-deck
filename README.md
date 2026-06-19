@@ -37,10 +37,10 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 默认推荐版是：
 
 ```text
-Original Dark Tech Baseline
+Rich Dark Tech Baseline
 ```
 
-默认主题是 `editorial`，默认色调是 `Deep Slate Tech / 深石墨科技`。它使用深石墨 / 深蓝黑背景、冷灰正文和低饱和青蓝主强调色。
+默认主题是 `editorial`，默认色调是 `Original Dark Tech Rich Palette / Rich Dark Tech`。它使用深石墨 / 深蓝黑背景、冷灰正文、青蓝主强调色、电蓝辅助强调、低饱和紫蓝空间光、teal 质量色、少量 amber 重点提示，以及 4-6 个协调图表色。
 
 可选黑金色调：
 
@@ -72,7 +72,7 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/?theme=visual&tone=auro
 - `tone=champagne`：Obsidian Champagne / 黑曜香槟，只作为可选黑金实验版。
 - `tone=aurora`：Graphite Aurora / 石墨极光，只作为实验增强版。
 
-`?tone=champagne`、`?theme=visual` 与 `?tone=aurora` 不能反向影响默认链接。默认链接永远优先保证冷静、统一、可演讲。
+`?tone=champagne`、`?theme=visual` 与 `?tone=aurora` 不能反向影响默认链接。默认链接永远优先保证色彩层次丰富但统一、不是黑金主导、也不是冷灰单调。
 
 规划中的 tone 名称还包括：Ink Cyan / 墨黑青蓝、Velvet Burgundy / 丝绒酒红、Porcelain Editorial / 象牙杂志、Sandstone Gallery / 沙岩展厅、Mono Museum / 黑白美术馆、Signal Lime / 信号青柠。
 
@@ -87,6 +87,13 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/?theme=visual&tone=auro
 动态背景强度在 `src/styles.css` 顶部变量中调整：
 
 ```css
+--color-accent-primary
+--color-accent-secondary
+--color-accent-tertiary
+--color-accent-warm
+--color-accent-success
+--color-accent-risk
+--chart-color-1 ... --chart-color-6
 --bg-motion-opacity
 --bg-glow-opacity
 --bg-sweep-opacity

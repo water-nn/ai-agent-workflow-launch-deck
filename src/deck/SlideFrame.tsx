@@ -8,7 +8,10 @@ type SlideFrameProps = {
 
 export function SlideFrame({ slide, index, total }: SlideFrameProps) {
   return (
-    <section className={`slide-frame slide-${slide.kind}`} aria-label={`${index + 1}. ${slide.title}`}>
+    <section
+      className={`slide-frame slide-${slide.kind} slide-id-${slide.id}`}
+      aria-label={`${index + 1}. ${slide.title}`}
+    >
       <div className="slide-inner">
         {slide.content}
         <div className="slide-signature">

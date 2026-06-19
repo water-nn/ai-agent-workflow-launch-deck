@@ -53,7 +53,7 @@ export const slides: Slide[] = [
     ...slideMeta[0],
     content: (
       <div className="cover-layout">
-        <div className="cover-kicker">Original Dark Tech Baseline</div>
+        <div className="cover-kicker">Rich Dark Tech Baseline</div>
         <h1>AI Agent 工作流发布会</h1>
         <p>从工具调用到自动化协作系统</p>
         <div className="cover-orbit">
@@ -122,7 +122,7 @@ export const slides: Slide[] = [
             ]}
           />
           <div className="metric-column">
-            <MetricCard label="Reusable memory" value="1×" detail="同一套规则进入 skill，而不是留在一次聊天里。" />
+            <MetricCard label="Reusable memory" value="1×" detail="同一套规则进入 skill，而不是留在一次聊天里。" tone="cyan" />
             <MetricCard label="Handoff loss" value="-64%" detail="用仓库和状态文件接住跨设备交接。" tone="slate" />
           </div>
         </div>
@@ -221,8 +221,8 @@ export const slides: Slide[] = [
         <div className="coverage-grid deck-system-grid">
           <HorizontalBarBlock title="html-presentation-deck 的默认能力覆盖" data={deckCapabilities} />
           <div className="metric-column">
-            <MetricCard label="Stable URL" value="Live" detail="默认公开链接保持为 GitHub Pages 推荐版。" />
-            <MetricCard label="Default theme" value="Slate" detail="Original Dark Tech Baseline 必须优先稳定。" />
+            <MetricCard label="Stable URL" value="Live" detail="默认公开链接保持为 GitHub Pages 推荐版。" tone="green" />
+            <MetricCard label="Default theme" value="Rich" detail="Rich Dark Tech Baseline 必须优先稳定。" tone="warm" />
           </div>
         </div>
       </div>
@@ -260,7 +260,7 @@ export const slides: Slide[] = [
             rows={[
               ['当前主题', 'AI Agent 工作流发布会', '避免后续偏成泛技术文档'],
               ['稳定链接', 'GitHub Pages URL', '让设备共享同一预览入口'],
-              ['默认基线', 'Original Dark Tech', '保护冷静技术演示风格'],
+              ['默认基线', 'Rich Dark Tech', '保护丰富但克制的深色科技演示风格'],
               ['下一步', '待验证、待部署、待设计 QA', '让 Codex 接手即可继续'],
             ]}
           />
@@ -308,7 +308,7 @@ export const slides: Slide[] = [
         <SlideHeader eyebrow="Theme boundary" title="正式默认版只做一件事：稳定、统一、可演讲" />
         <div className="decision-grid theme-boundary-grid">
           {[
-            ['Default', '深石墨 / 深蓝黑背景，冷灰正文，低饱和青蓝强调色。'],
+            ['Default', '深石墨 / 深蓝黑背景，冷灰正文，青蓝、电蓝、低饱和紫蓝形成受控层次。'],
             ['Cards', '同一边框、同一透明度、同一 hover 反馈。'],
             ['Charts', '图表只服务观点，不把页面做成 dashboard。'],
             ['Motion', '背景克制，动效只强化层级与进入节奏。'],

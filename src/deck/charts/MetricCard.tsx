@@ -4,7 +4,7 @@ type MetricCardProps = {
   label: string
   value: string
   detail: string
-  tone?: 'gold' | 'cyan' | 'green' | 'slate'
+  tone?: 'gold' | 'cyan' | 'green' | 'slate' | 'warm' | 'risk'
 }
 
 const parseMetric = (value: string) => {

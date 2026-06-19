@@ -10,16 +10,19 @@ AI Agent 工作流发布会：从工具调用到自动化协作系统。
 
 https://water-nn.github.io/ai-agent-workflow-launch-deck/
 
-默认链接必须保持为稳定推荐版：`Original Dark Tech Baseline`。
+默认链接必须保持为稳定推荐版：`Rich Dark Tech Baseline`。
 
 ## 当前默认视觉基线
 
 - 深石墨 / 深蓝黑背景
 - 冷灰正文
-- 低饱和青蓝作为主强调色
-- 少量暖光点缀可以存在，但不能成为主色
-- 克制动态背景
+- 青蓝作为主强调色，电蓝作为辅助强调
+- 低饱和紫蓝作为少量空间光
+- teal 用于质量 / 成功层级，soft coral 用于风险层级
+- 少量 amber 暖光点缀可以存在，但不能超过重点提示角色
+- 克制但有层次的动态背景
 - 统一 Agenda、卡片、按钮、图表和进度条
+- 图表使用 4-6 个受控协调色，而不是单一 cyan 或随机 dashboard palette
 - 16:9 演示舞台
 - 所有页面服务六幕叙事
 
@@ -45,8 +48,9 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 ## 当前状态
 
 - 已把页面内容回正为“AI Agent 工作流发布会”主题。
-- 已把默认视觉修正为 Original Dark Tech / Deep Slate Tech baseline。
+- 已把默认视觉从冷灰单调升级为 Rich Dark Tech / Original Dark Tech Rich Palette。
 - 已保留 `?tone=champagne` 作为可选黑金版本，并隔离 `visual` / `aurora` 实验增强版，避免污染默认链接。
+- 已补充 cyan、electric blue、muted violet、teal、amber、soft coral 的 token 化 palette，并让背景、Agenda、Progress、卡片和图表共享这套变量。
 - 已修复 Agenda pin 控件、Agenda panel spacing、pinned stage 对齐、标题宽度和 split layout 视觉重量。
 - 已补充本状态文件，用于 Mac / Windows / 多线程 Codex 交接。
 
