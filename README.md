@@ -26,6 +26,15 @@ src/slides.tsx
 
 新手建议先只改这个文件。详细说明见 `如何修改内容.md`。
 
+长内容卡片和媒体示例相关文件：
+
+```text
+src/deck/layouts/SlideBlocks.tsx
+src/deck/media/MediaPreview.tsx
+```
+
+`ScrollableCard` 用于单张卡片内部滚动，保持页面级无滚动。`MediaImage` / `MediaVideo` 用于图片放大、视频控制和媒体弹层示例。
+
 ## 远程访问链接
 
 ```text
@@ -138,6 +147,12 @@ Pinned Agenda 是双栏布局模式，不是整张幻灯片缩小模式。固定
 本轮视觉重设计参考了 `ui-ux-pro-max` 和 `frontend-design`：优先以真实观感判断是否像高级 AI 产品发布会，而不是机械检查 token 是否存在。
 
 图表入场动效在 `src/deck/charts/` 和 `src/deck/controls/Progress.tsx` 中实现。进入图表页时，柱状图、横向条、折线、环形图、数字指标和进度条会播放入场动效。系统开启 reduced motion 时，动效会降低或直接显示最终值。
+
+## 长内容卡片和媒体
+
+当前项目在 Design QA 页加入了 `ScrollableCard` 示例：页面、stage 和 slide frame 不滚动，只有过长卡片内部滚动。滚动区域使用细滚动条和底部 fade，适合较长检查清单、代码摘录或资料说明。
+
+Deck 能力页加入了媒体能力示例：图片 / 截图预览可点击放大，视频占位支持播放、暂停、进度、音量和放大。弹层打开时会高于 Agenda、topbar 和进度条，并暂时阻止方向键翻页；`Esc` 会先关闭弹层，关闭后恢复正常 slide navigation。
 
 ## 更新远程页面
 

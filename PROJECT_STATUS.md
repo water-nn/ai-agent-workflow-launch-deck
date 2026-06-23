@@ -37,6 +37,9 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 - topbar、Agenda、stage 和 progress 共用 `--app-safe-x`、`--app-safe-y`、`--topbar-height`、`--topbar-to-stage-gap`、`--stage-bottom-gap`、`--stage-left`、`--stage-right` 等 layout token
 - 已收紧 topbar 到 stage 的垂直距离，让 `1366x768` / `1440x900` 的 16:9 内容显示区更高
 - Pinned Agenda 是双栏 responsive reflow，不是整张 slide 缩放
+- Design QA 页已加入 `ScrollableCard`，用于证明单个长内容卡片内部滚动，页面级仍无滚动
+- Deck 能力页已加入 `MediaImage` / `MediaVideo` 示例，证明图片 lightbox、视频控制和媒体弹层能力
+- 媒体弹层打开时方向键翻页会被阻止，`Esc` 优先关闭弹层，关闭后恢复 slide navigation
 - 所有页面服务六幕叙事
 
 `?tone=champagne`、`?theme=visual` 与 `?tone=aurora` 只作为实验增强版，不能反向影响默认主题。
@@ -55,6 +58,8 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 - 内容：`src/slides.tsx`
 - 视觉：`src/styles.css`
 - 演示壳：`src/deck/`
+- 长内容卡片：`src/deck/layouts/SlideBlocks.tsx`
+- 媒体组件：`src/deck/media/MediaPreview.tsx`
 - 远程链接：`REMOTE_URL.txt`
 - 部署说明：`部署说明.md`
 
@@ -68,6 +73,8 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 - 已保留 mesh / halo / ribbon / aurora 背景层，但默认色彩回到旧项目母版的左 cyan / 右 violet 深蓝黑空间感。
 - 已把外层背景进一步压回更深的 blue-black，stage 和 card surface 保持略亮一级，避免默认页变成纯黑平面。
 - 已把 topbar、Agenda、stage、progress 的 spacing 抽成 layout token，并缩短 topbar 到舞台的距离，优先服务 1366x768 / 1440x900 演示场景。
+- 已新增 `ScrollableCard`，让单张过长卡片内部滚动，不破坏 16:9 stage。
+- 已新增 `src/deck/media/MediaPreview.tsx`，提供图片 lightbox 与视频占位控制示例，并处理媒体弹层与键盘翻页的优先级。
 - 已统一 subtitle、eyebrow、caption、chart note、legend 的 foreground 角色，避免普通说明文字随机使用 cyan / blue / violet / amber / coral。
 - 已修复顶部动态背景黑色硬边：取消 app 顶部硬线性压暗，让 DynamicBackground 的 blur / glow / halo 层向 viewport 外延展。
 - 已把 Pinned Agenda 改为右侧舞台 responsive reflow，而不是整体缩小 16:9 画布。
@@ -84,5 +91,7 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 4. 检查 topbar 到舞台的上方留白是否已减少，16:9 frame 是否更高，且没有使用整体 `scale()` / `zoom`。
 5. 检查 Pinned Agenda 是否双栏回流，右侧内容是否仍可读，页面级是否无滚动。
 6. 检查卡片、按钮、Agenda item、图表卡和系统节点 hover 是否有明显但克制的高级反馈，且不跳布局。
-7. 再检查 `?tone=champagne`、`?theme=visual`、`?tone=aurora`、`?theme=visual&tone=aurora` 是否仍可作为实验增强版打开。
-8. 任何新功能先保护默认主题，再考虑实验增强版。
+7. 检查长内容卡片是否只在卡片内部滚动，滚动条和 focus 状态是否精致。
+8. 检查图片 lightbox 和视频放大弹层是否高于 Agenda / topbar / progress，且弹层打开时不会误触发方向键翻页。
+9. 再检查 `?tone=champagne`、`?theme=visual`、`?tone=aurora`、`?theme=visual&tone=aurora` 是否仍可作为实验增强版打开。
+10. 任何新功能先保护默认主题，再考虑实验增强版。

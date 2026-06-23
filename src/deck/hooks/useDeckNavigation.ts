@@ -22,6 +22,8 @@ const getInitialSlide = (slideCount: number) => {
   return 0
 }
 
+const isModalNavigationBlocked = () => document.body.classList.contains('media-modal-open')
+
 export function useDeckNavigation(slideCount: number) {
   const [currentIndex, setCurrentIndex] = useState(() => getInitialSlide(slideCount))
 
@@ -50,6 +52,7 @@ export function useDeckNavigation(slideCount: number) {
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
+      if (event.defaultPrevented || isModalNavigationBlocked()) return
       if (isEditableTarget(event.target)) return
       const nextKeys = ['ArrowRight', 'ArrowDown', 'PageDown', ' ']
       const previousKeys = ['ArrowLeft', 'ArrowUp', 'PageUp']

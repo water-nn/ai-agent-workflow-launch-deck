@@ -21,6 +21,30 @@ export function GlassCard({ children, className = '' }: { children: ReactNode; c
   return <article className={`glass-card ${className}`}>{children}</article>
 }
 
+export function ScrollableCard({
+  children,
+  className = '',
+  label,
+  title,
+}: {
+  children: ReactNode
+  className?: string
+  label?: ReactNode
+  title?: ReactNode
+}) {
+  const regionLabel = typeof title === 'string' ? `${title} 详情` : '卡片详情'
+
+  return (
+    <article className={`glass-card scrollable-card ${className}`}>
+      {label ? <span>{label}</span> : null}
+      {title ? <strong>{title}</strong> : null}
+      <div className="scrollable-card-body" role="region" aria-label={regionLabel} tabIndex={0}>
+        {children}
+      </div>
+    </article>
+  )
+}
+
 export function Pill({ children, className = '' }: { children: ReactNode; className?: string }) {
   return <span className={`pill ${className}`}>{children}</span>
 }

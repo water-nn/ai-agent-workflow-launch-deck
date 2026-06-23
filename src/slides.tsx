@@ -1,6 +1,7 @@
 import type { Slide } from './deck/types'
 import { BarChartBlock, DataTableBlock, HorizontalBarBlock, LineChartBlock, MetricCard } from './deck/charts'
-import { FlowNode, GlassCard, Pill, SlideHeader, StageLine } from './deck/layouts/SlideBlocks'
+import { MediaImage, MediaVideo } from './deck/media/MediaPreview'
+import { FlowNode, GlassCard, Pill, ScrollableCard, SlideHeader, StageLine } from './deck/layouts/SlideBlocks'
 
 const slideMeta = [
   { id: 'cover', title: 'AI Agent 工作流发布会', navTitle: '封面', section: 'Opening', kind: 'cover' },
@@ -219,7 +220,27 @@ export const slides: Slide[] = [
           title="这不是 UI 模板测试，而是网页式演示生产系统"
         />
         <div className="coverage-grid deck-system-grid">
-          <HorizontalBarBlock title="html-presentation-deck 的默认能力覆盖" data={deckCapabilities} />
+          <div className="deck-system-stack">
+            <HorizontalBarBlock title="html-presentation-deck 的默认能力覆盖" data={deckCapabilities} />
+            <div className="media-showcase-grid">
+              <MediaImage
+                title="Image lightbox"
+                caption="截图 / 设计稿默认 contain，点击后在舞台上方放大查看。"
+                alt="AI Agent deck screenshot mock with agenda, stage and cards"
+              >
+                <div className="deck-shot-mock">
+                  <div className="shot-topbar" />
+                  <div className="shot-agenda" />
+                  <div className="shot-stage">
+                    <span />
+                    <strong />
+                    <em />
+                  </div>
+                </div>
+              </MediaImage>
+              <MediaVideo title="Video preview" caption="视频占位支持播放、进度、音量与放大，默认不自动播放。" />
+            </div>
+          </div>
           <div className="metric-column">
             <MetricCard label="Stable URL" value="Live" detail="默认公开链接保持为 GitHub Pages 推荐版。" tone="green" />
             <MetricCard label="Default tone" value="agent-lab" detail="默认配色来自早期 agent-skill-html-deck 色彩母版。" tone="warm" />
@@ -284,19 +305,37 @@ export const slides: Slide[] = [
       <div className="matrix-layout">
         <SlideHeader eyebrow="Act V · Upgrade" title="companion design skills 负责把可运行变成可发布" />
         <div className="problem-matrix design-qa-grid">
-          {[
-            ['ui-ux-pro-max', '检查控件、状态、响应式、可读性和演示场景一致性。'],
-            ['frontend-design', '校准视觉观点、字体层级、节奏和独特但克制的 signature。'],
-            ['Design QA', '减少色彩、减少装饰，强化叙事、图表和默认主题统一。'],
-            ['视觉回归', '每次功能变化后重新检查默认链接，而不是只看实验主题。'],
-            ['发布会感', '让页面像产品发布会，而不是 dashboard 拼贴或组件陈列。'],
-          ].map(([title, detail], index) => (
-            <GlassCard className="problem-card" key={title}>
-              <span>QA {String(index + 1).padStart(2, '0')}</span>
-              <strong>{title}</strong>
-              <p>{detail}</p>
-            </GlassCard>
-          ))}
+          <GlassCard className="problem-card">
+            <span>QA 01</span>
+            <strong>ui-ux-pro-max</strong>
+            <p>检查控件、状态、响应式、可读性和演示场景一致性。</p>
+          </GlassCard>
+          <ScrollableCard className="problem-card scroll-demo-card" label="QA 02" title="长内容卡片">
+            <p>当单张卡片需要承载较长验收清单时，页面仍保持 16:9 无滚动，只让卡片内部建立局部滚动。</p>
+            <ul>
+              <li>保留同组卡片高度，不把这一页撑破。</li>
+              <li>滚动区域使用细滚动条和上下 fade，避免廉价表格感。</li>
+              <li>鼠标、触控板和键盘焦点都能进入局部内容。</li>
+              <li>卡片滚动不会永久劫持左右翻页。</li>
+              <li>reduced motion 下关闭位移，仍保留边框和 surface 反馈。</li>
+              <li>内容过长时优先局部滚动，不把整张 slide 缩小。</li>
+            </ul>
+          </ScrollableCard>
+          <GlassCard className="problem-card">
+            <span>QA 03</span>
+            <strong>frontend-design</strong>
+            <p>校准视觉观点、字体层级、节奏和独特但克制的 signature。</p>
+          </GlassCard>
+          <GlassCard className="problem-card">
+            <span>QA 04</span>
+            <strong>视觉回归</strong>
+            <p>每次功能变化后重新检查默认链接，而不是只看实验主题。</p>
+          </GlassCard>
+          <GlassCard className="problem-card">
+            <span>QA 05</span>
+            <strong>发布会感</strong>
+            <p>让页面像产品发布会，而不是 dashboard 拼贴或组件陈列。</p>
+          </GlassCard>
         </div>
       </div>
     ),
