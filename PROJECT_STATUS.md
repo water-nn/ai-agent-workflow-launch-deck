@@ -16,7 +16,7 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 
 - 色彩母版来自早期本地项目 `/Users/water/Documents/系统操作/agent-skill-html-deck`
 - 本轮只参考旧项目的色彩、光感、Agenda 和 hover 质感，不复制旧项目排版
-- deep navy / blue black 背景，接近 `#050812` / `#0b1024` / `#04060d`
+- deep navy / blue black 背景，接近 `#040711` / `#050812` / `#070b18` / `#03050c`
 - 多层 radial / conic / linear gradients 建立空间深度，不能是平面黑灰底
 - 超大 halo、斜向 ribbon、低透明网格和 aurora glow 必须覆盖到 viewport 外
 - `--surface-0` 到 `--surface-3` 区分 body、stage、card、navigation、chart panel 和 hover / active 状态
@@ -34,6 +34,8 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 - hover 必须支持 reduced motion，且不能影响布局或降低可读性
 - 图表使用 4-6 个受控协调色，而不是单一 cyan 或随机 dashboard palette
 - 16:9 演示舞台
+- topbar、Agenda、stage 和 progress 共用 `--app-safe-x`、`--app-safe-y`、`--topbar-height`、`--topbar-to-stage-gap`、`--stage-bottom-gap`、`--stage-left`、`--stage-right` 等 layout token
+- 已收紧 topbar 到 stage 的垂直距离，让 `1366x768` / `1440x900` 的 16:9 内容显示区更高
 - Pinned Agenda 是双栏 responsive reflow，不是整张 slide 缩放
 - 所有页面服务六幕叙事
 
@@ -64,6 +66,8 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 - 已保留 `?tone=champagne` 作为可选黑金版本，并隔离 `visual` / `aurora` 实验增强版，避免污染默认链接。
 - 已补充 cyan、teal、electric blue、muted violet、indigo、mint、soft coral 的 token 化 palette，并让背景、Agenda、Progress、卡片和图表共享这套变量。
 - 已保留 mesh / halo / ribbon / aurora 背景层，但默认色彩回到旧项目母版的左 cyan / 右 violet 深蓝黑空间感。
+- 已把外层背景进一步压回更深的 blue-black，stage 和 card surface 保持略亮一级，避免默认页变成纯黑平面。
+- 已把 topbar、Agenda、stage、progress 的 spacing 抽成 layout token，并缩短 topbar 到舞台的距离，优先服务 1366x768 / 1440x900 演示场景。
 - 已统一 subtitle、eyebrow、caption、chart note、legend 的 foreground 角色，避免普通说明文字随机使用 cyan / blue / violet / amber / coral。
 - 已修复顶部动态背景黑色硬边：取消 app 顶部硬线性压暗，让 DynamicBackground 的 blur / glow / halo 层向 viewport 外延展。
 - 已把 Pinned Agenda 改为右侧舞台 responsive reflow，而不是整体缩小 16:9 画布。
@@ -77,7 +81,8 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 1. 先运行 `npm run build`。
 2. 本地预览默认链接，优先检查封面、Agenda、问题页、跨设备页、Design QA 页和结尾页。
 3. 检查默认背景是否更有空间光、渐变是否自然、顶部是否无黑色硬边。
-4. 检查 Pinned Agenda 是否双栏回流，右侧内容是否仍可读，页面级是否无滚动。
-5. 检查卡片、按钮、Agenda item、图表卡和系统节点 hover 是否有明显但克制的高级反馈，且不跳布局。
-6. 再检查 `?tone=champagne`、`?theme=visual`、`?tone=aurora`、`?theme=visual&tone=aurora` 是否仍可作为实验增强版打开。
-7. 任何新功能先保护默认主题，再考虑实验增强版。
+4. 检查 topbar 到舞台的上方留白是否已减少，16:9 frame 是否更高，且没有使用整体 `scale()` / `zoom`。
+5. 检查 Pinned Agenda 是否双栏回流，右侧内容是否仍可读，页面级是否无滚动。
+6. 检查卡片、按钮、Agenda item、图表卡和系统节点 hover 是否有明显但克制的高级反馈，且不跳布局。
+7. 再检查 `?tone=champagne`、`?theme=visual`、`?tone=aurora`、`?theme=visual&tone=aurora` 是否仍可作为实验增强版打开。
+8. 任何新功能先保护默认主题，再考虑实验增强版。

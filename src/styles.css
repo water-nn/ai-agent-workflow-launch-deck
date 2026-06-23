@@ -15,15 +15,15 @@
   line-height: 1.3;
   font-weight: 400;
   color: #e5eefc;
-  background: #050812;
-  --bg-page: #050812;
-  --bg-page-glow-cyan: rgba(56, 248, 255, 0.16);
-  --bg-page-glow-violet: rgba(139, 92, 246, 0.19);
-  --surface-stage: rgba(15, 23, 42, 0.88);
-  --surface-panel: rgba(2, 6, 23, 0.66);
-  --surface-card: rgba(15, 23, 42, 0.62);
-  --surface-card-hover: rgba(18, 30, 56, 0.9);
-  --surface-agenda: rgba(2, 6, 23, 0.72);
+  background: #040711;
+  --bg-page: #040711;
+  --bg-page-glow-cyan: rgba(56, 248, 255, 0.18);
+  --bg-page-glow-violet: rgba(139, 92, 246, 0.2);
+  --surface-stage: rgba(10, 16, 34, 0.9);
+  --surface-panel: rgba(4, 9, 22, 0.7);
+  --surface-card: rgba(12, 20, 40, 0.64);
+  --surface-card-hover: rgba(19, 33, 62, 0.92);
+  --surface-agenda: rgba(4, 9, 22, 0.76);
   --border-subtle: rgba(226, 238, 252, 0.12);
   --border-accent: rgba(56, 248, 255, 0.42);
   --border-violet: rgba(139, 92, 246, 0.26);
@@ -42,7 +42,7 @@
   --shadow-card: 0 28px 90px rgba(0, 0, 0, 0.42);
   --shadow-card-hover: 0 30px 90px rgba(0, 0, 0, 0.44), 0 0 40px rgba(56, 248, 255, 0.12), 0 0 46px rgba(139, 92, 246, 0.08);
   --surface-0: var(--bg-page);
-  --surface-1: #0b1024;
+  --surface-1: #070b18;
   --surface-2: var(--surface-stage);
   --surface-3: var(--surface-card-hover);
   --surface-border: var(--border-subtle);
@@ -55,7 +55,7 @@
   --hover-transition: 200ms cubic-bezier(0.22, 1, 0.36, 1);
   --color-bg-base: var(--surface-0);
   --color-bg-deep: var(--surface-1);
-  --color-bg-panel: #0f172a;
+  --color-bg-panel: #0a1022;
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-soft: var(--text-muted);
@@ -95,15 +95,15 @@
   --risk-rgb: 239, 143, 174;
   --bg-base-0: var(--color-bg-base);
   --bg-base-1: var(--color-bg-deep);
-  --bg-base-2: #04060d;
-  --panel-rgb: 15, 23, 42;
+  --bg-base-2: #03050c;
+  --panel-rgb: 10, 16, 34;
   --panel: var(--surface-2);
   --panel-strong: rgba(2, 6, 23, 0.86);
   --line: var(--surface-border);
   --shadow: var(--surface-shadow);
-  --bg-motion-opacity: 0.58;
-  --bg-glow-opacity: 0.68;
-  --bg-sweep-opacity: 0.36;
+  --bg-motion-opacity: 0.62;
+  --bg-glow-opacity: 0.74;
+  --bg-sweep-opacity: 0.4;
   --bg-particle-opacity: 0.24;
   --chart-ease: cubic-bezier(0.22, 1, 0.36, 1);
   /*
@@ -133,6 +133,20 @@
   --chart-neutral: rgba(148, 163, 184, 0.58);
   --chart-warm: var(--chart-color-5);
   --chart-quiet: rgba(203, 213, 225, 0.68);
+  --app-safe-x: clamp(18px, 2.35vw, 44px);
+  --app-safe-y: clamp(9px, 1.35vh, 16px);
+  --topbar-height: clamp(40px, 5.2vh, 48px);
+  --topbar-to-stage-gap: clamp(9px, 1.45vh, 14px);
+  --stage-bottom-gap: clamp(28px, 3.7vh, 44px);
+  --progress-height: 5px;
+  --stage-radius: 24px;
+  --agenda-rail-width: 56px;
+  --agenda-width: 220px;
+  --stage-top: calc(var(--app-safe-y) + var(--topbar-height) + var(--topbar-to-stage-gap));
+  --stage-left: clamp(72px, 6.4vw, 108px);
+  --stage-right: var(--app-safe-x);
+  --stage-bottom: var(--stage-bottom-gap);
+  --stage-pinned-left: calc(var(--agenda-width) + var(--app-safe-x));
   --slide-pad: clamp(40px, 4.3vw, 74px);
   --title: clamp(44px, 4.5vw, 72px);
   --cover-title: clamp(56px, 5.8vw, 102px);
@@ -178,10 +192,10 @@ button:disabled {
   height: 100dvh;
   overflow: hidden;
   background:
-    radial-gradient(circle at 15% 10%, rgba(var(--accent-rgb), 0.16), transparent 34rem),
-    radial-gradient(circle at 86% 20%, rgba(var(--accent-3-rgb), 0.18), transparent 38rem),
-    radial-gradient(circle at 48% 110%, rgba(var(--success-rgb), 0.08), transparent 32rem),
-    linear-gradient(135deg, #050812 0%, #0b1024 55%, #04060d 100%);
+    radial-gradient(circle at 14% 12%, rgba(var(--accent-rgb), 0.17), transparent 35rem),
+    radial-gradient(circle at 88% 24%, rgba(var(--accent-3-rgb), 0.19), transparent 40rem),
+    radial-gradient(circle at 50% 114%, rgba(var(--success-rgb), 0.08), transparent 34rem),
+    linear-gradient(135deg, #040711 0%, #070b18 54%, #03050c 100%);
   isolation: isolate;
 }
 
@@ -325,18 +339,18 @@ button:disabled {
   z-index: -3;
   overflow: hidden;
   background:
-    radial-gradient(circle at 15% 10%, rgba(var(--accent-rgb), 0.12), transparent 30rem),
-    radial-gradient(circle at 86% 20%, rgba(var(--accent-3-rgb), 0.14), transparent 34rem),
-    linear-gradient(135deg, #050812 0%, #0b1024 55%, #04060d 100%);
+    radial-gradient(circle at 14% 12%, rgba(var(--accent-rgb), 0.14), transparent 31rem),
+    radial-gradient(circle at 88% 24%, rgba(var(--accent-3-rgb), 0.15), transparent 36rem),
+    linear-gradient(135deg, #040711 0%, #070b18 54%, #03050c 100%);
 }
 
 .deck-bg-base {
   inset: -24%;
   background:
-    radial-gradient(circle at 14% 12%, rgba(var(--accent-rgb), 0.17), transparent 30rem),
-    radial-gradient(circle at 88% 22%, rgba(var(--accent-3-rgb), 0.18), transparent 36rem),
-    radial-gradient(circle at 44% 106%, rgba(var(--success-rgb), 0.095), transparent 34rem),
-    linear-gradient(135deg, #050812 0%, #0b1024 55%, #04060d 100%);
+    radial-gradient(circle at 13% 14%, rgba(var(--accent-rgb), 0.18), transparent 32rem),
+    radial-gradient(circle at 90% 24%, rgba(var(--accent-3-rgb), 0.19), transparent 38rem),
+    radial-gradient(circle at 46% 108%, rgba(var(--success-rgb), 0.096), transparent 35rem),
+    linear-gradient(135deg, #040711 0%, #070b18 54%, #03050c 100%);
 }
 
 .deck-bg-depth {
@@ -534,15 +548,15 @@ button:disabled {
 
 .top-controls {
   position: absolute;
-  top: clamp(14px, 2vh, 28px);
-  left: clamp(76px, 7vw, 112px);
-  right: clamp(20px, 3vw, 48px);
+  top: var(--app-safe-y);
+  left: var(--stage-left);
+  right: var(--stage-right);
   z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  min-height: 44px;
+  min-height: var(--topbar-height);
 }
 
 .deck-brand,
@@ -656,13 +670,13 @@ button:disabled {
 .hover-agenda {
   position: absolute;
   z-index: 25;
-  top: clamp(86px, 11vh, 120px);
-  bottom: clamp(34px, 5vh, 62px);
-  left: clamp(12px, 1.4vw, 22px);
-  width: 56px;
-  max-width: 220px;
+  top: var(--stage-top);
+  bottom: var(--stage-bottom);
+  left: var(--app-safe-x);
+  width: var(--agenda-rail-width);
+  max-width: var(--agenda-width);
   display: grid;
-  grid-template-columns: 56px 164px;
+  grid-template-columns: var(--agenda-rail-width) calc(var(--agenda-width) - var(--agenda-rail-width));
   overflow: hidden;
   border: 1px solid rgba(var(--ink-rgb), 0.12);
   border-radius: 14px;
@@ -684,7 +698,7 @@ button:disabled {
 .hover-agenda:focus-within,
 .hover-agenda-open,
 .hover-agenda-pinned {
-  width: 220px;
+  width: var(--agenda-width);
   border-color: rgba(var(--accent-rgb), 0.34);
   background:
     radial-gradient(ellipse at 0% 0%, rgba(var(--accent-rgb), 0.16), transparent 52%),
@@ -695,7 +709,7 @@ button:disabled {
 }
 
 .agenda-rail {
-  min-width: 56px;
+  min-width: var(--agenda-rail-width);
   display: grid;
   grid-template-rows: 1fr auto;
   gap: 16px;
@@ -745,7 +759,7 @@ button:disabled {
 }
 
 .agenda-panel {
-  min-width: 164px;
+  min-width: calc(var(--agenda-width) - var(--agenda-rail-width));
   min-height: 0;
   padding: 18px 16px 18px 4px;
   opacity: 0;
@@ -772,7 +786,7 @@ button:disabled {
 .agenda-items {
   display: grid;
   gap: 6px;
-  max-height: calc(100dvh - 214px);
+  max-height: calc(100dvh - var(--stage-top) - var(--stage-bottom) - 78px);
   overflow-y: auto;
   padding-right: 0;
 }
@@ -814,7 +828,7 @@ button:disabled {
 
 .deck-stage {
   position: absolute;
-  inset: clamp(86px, 11vh, 120px) clamp(22px, 3vw, 52px) clamp(34px, 5vh, 62px) clamp(72px, 7vw, 118px);
+  inset: var(--stage-top) var(--stage-right) var(--stage-bottom) var(--stage-left);
   display: grid;
   place-items: center;
   container-type: size;
@@ -823,12 +837,12 @@ button:disabled {
 }
 
 .nav-pinned .deck-stage {
-  left: clamp(236px, 18vw, 276px);
+  left: var(--stage-pinned-left);
 }
 
 .nav-pinned .progress-shell,
 .nav-pinned .top-controls {
-  left: clamp(236px, 18vw, 276px);
+  left: var(--stage-pinned-left);
 }
 
 .nav-pinned {
@@ -846,7 +860,7 @@ button:disabled {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border: 1px solid var(--surface-border);
-  border-radius: 24px;
+  border-radius: var(--stage-radius);
   background:
     radial-gradient(ellipse at 8% 8%, rgba(var(--accent-rgb), 0.16), transparent 38%),
     radial-gradient(ellipse at 96% 90%, rgba(var(--accent-3-rgb), 0.14), transparent 42%),
@@ -908,14 +922,14 @@ button:disabled {
 
 .progress-shell {
   position: absolute;
-  left: clamp(72px, 7vw, 118px);
-  right: clamp(22px, 3vw, 52px);
-  bottom: clamp(14px, 2vh, 24px);
+  left: var(--stage-left);
+  right: var(--stage-right);
+  bottom: var(--app-safe-y);
   z-index: 22;
 }
 
 .progress-track {
-  height: 5px;
+  height: var(--progress-height);
   border-radius: 999px;
   overflow: hidden;
   background:

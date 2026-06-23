@@ -114,6 +114,25 @@ Pinned Agenda 是双栏布局模式，不是整张幻灯片缩小模式。固定
 --bg-particle-opacity
 ```
 
+布局空间也通过 `src/styles.css` 顶部 token 管理：
+
+```css
+--app-safe-x
+--app-safe-y
+--topbar-height
+--topbar-to-stage-gap
+--stage-bottom-gap
+--progress-height
+--stage-radius
+--agenda-width
+--stage-left
+--stage-right
+--stage-top
+--stage-bottom
+```
+
+当前默认版已把外层背景压回更深的 blue-black，并缩短 topbar 到 16:9 舞台的距离，让 `1366x768` 和 `1440x900` 下的内容显示区更高。不要用整体 `scale()` / `zoom` 解决舞台空间问题；优先调整这些 layout token。
+
 默认背景使用多层 radial / conic / linear gradients、超大 halo、斜向 ribbon、低透明网格和柔和 aurora 建立旧项目式深色空间感。顶部、底部和左右边缘不能出现黑色硬边。卡片、按钮、Agenda item、图表卡和架构节点共享同一套 hover 语言：轻微上浮、约 1.008 微放大、surface 提亮、边框变细腻、低透明 cyan / violet glow 增强，并支持 `prefers-reduced-motion: reduce`。
 
 本轮视觉重设计参考了 `ui-ux-pro-max` 和 `frontend-design`：优先以真实观感判断是否像高级 AI 产品发布会，而不是机械检查 token 是否存在。
