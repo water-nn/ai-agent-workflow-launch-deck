@@ -37,12 +37,12 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 默认推荐版是：
 
 ```text
-Expressive Premium Dark Tech
+Original Agent Skill Lab Palette / agent-lab
 ```
 
-默认主题是 `editorial`，默认色调是 `Expressive Premium Dark Tech / Advanced AI Launch Visual System`。它使用 deep navy / graphite blue 多层底色、冷灰正文、aqua cyan 主强调色、deep electric blue 辅助强调、muted indigo 空间光、teal 质量色、少量 amber 重点提示，以及 4-6 个协调图表色。
+默认主题是 `editorial`，默认色调是 `agent-lab`。这套配色从早期本地项目 `/Users/water/Documents/系统操作/agent-skill-html-deck` 提炼而来，只参考旧项目的色彩、光感、Agenda 和 hover 质感，不复制旧项目排版。
 
-默认视觉必须像成熟 AI 产品发布会，而不是普通 dashboard、随机 neon 模板、黑金金融路演或冷灰网页模板。本轮已从偏沉闷的深色模板，重做为更自由、更有空间光感的 Expressive Premium Dark Tech。`visual` / `aurora` 只作为实验增强版，不能反向影响默认主题。
+默认视觉必须像成熟 AI 产品发布会，而不是普通 dashboard、随机 neon 模板、黑金金融路演或冷灰网页模板。`agent-lab` 使用 deep navy / blue black 大背景，左上 cyan / teal 光感，右侧 muted violet / indigo 空间光，深蓝黑玻璃主舞台，cyan / teal Agenda active state，以及 cyan / mint / violet 进度条和卡片 hover。`visual` / `aurora` 只作为实验增强版，不能反向影响默认主题。
 
 可选黑金色调：
 
@@ -70,11 +70,11 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/?theme=visual&tone=auro
 
 当前项目已实现：
 
-- `tone=slate`：Expressive Premium Dark Tech / 高级 AI 发布会深色科技，正式推荐版，也是无参数默认链接。
+- `tone=agent-lab`：Original Agent Skill Lab Palette / 早期 `agent-skill-html-deck` 色彩母版，正式推荐版，也是无参数默认链接。
 - `tone=champagne`：Obsidian Champagne / 黑曜香槟，只作为可选黑金实验版。
 - `tone=aurora`：Graphite Aurora / 石墨极光，只作为实验增强版。
 
-`?tone=champagne`、`?theme=visual` 与 `?tone=aurora` 不能反向影响默认链接。默认链接永远优先保证色彩层次丰富但统一、不是黑金主导、不是冷灰单调，也不是被 token 规则限制住的模板感。
+`?tone=champagne`、`?theme=visual` 与 `?tone=aurora` 不能反向影响默认链接。默认链接永远优先保证接近旧项目母版的 cyan / teal / violet 深色科技感，不是黑金主导，不是沉闷冷灰，也不是被 token 规则限制住的模板感。
 
 规划中的 tone 名称还包括：Ink Cyan / 墨黑青蓝、Velvet Burgundy / 丝绒酒红、Porcelain Editorial / 象牙杂志、Sandstone Gallery / 沙岩展厅、Mono Museum / 黑白美术馆、Signal Lime / 信号青柠。
 
@@ -114,7 +114,7 @@ Pinned Agenda 是双栏布局模式，不是整张幻灯片缩小模式。固定
 --bg-particle-opacity
 ```
 
-默认背景使用多层 radial / conic / linear gradients、超大 halo、斜向 ribbon、低透明网格和柔和 aurora 建立深色空间感。顶部、底部和左右边缘不能出现黑色硬边。卡片、按钮、Agenda item、图表卡和架构节点共享同一套 hover 语言：轻微上浮、surface 提亮、边框变细腻、低透明 glow 增强，并支持 `prefers-reduced-motion: reduce`。
+默认背景使用多层 radial / conic / linear gradients、超大 halo、斜向 ribbon、低透明网格和柔和 aurora 建立旧项目式深色空间感。顶部、底部和左右边缘不能出现黑色硬边。卡片、按钮、Agenda item、图表卡和架构节点共享同一套 hover 语言：轻微上浮、约 1.008 微放大、surface 提亮、边框变细腻、低透明 cyan / violet glow 增强，并支持 `prefers-reduced-motion: reduce`。
 
 本轮视觉重设计参考了 `ui-ux-pro-max` 和 `frontend-design`：优先以真实观感判断是否像高级 AI 产品发布会，而不是机械检查 token 是否存在。
 

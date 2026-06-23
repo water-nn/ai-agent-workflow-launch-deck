@@ -10,20 +10,22 @@ AI Agent 工作流发布会：从工具调用到自动化协作系统。
 
 https://water-nn.github.io/ai-agent-workflow-launch-deck/
 
-默认链接必须保持为稳定推荐版：`Expressive Premium Dark Tech`。
+默认链接必须保持为稳定推荐版：`Original Agent Skill Lab Palette / agent-lab`。
 
 ## 当前默认视觉基线
 
-- deep navy / graphite blue / dark slate 背景
+- 色彩母版来自早期本地项目 `/Users/water/Documents/系统操作/agent-skill-html-deck`
+- 本轮只参考旧项目的色彩、光感、Agenda 和 hover 质感，不复制旧项目排版
+- deep navy / blue black 背景，接近 `#050812` / `#0b1024` / `#04060d`
 - 多层 radial / conic / linear gradients 建立空间深度，不能是平面黑灰底
 - 超大 halo、斜向 ribbon、低透明网格和 aurora glow 必须覆盖到 viewport 外
 - `--surface-0` 到 `--surface-3` 区分 body、stage、card、navigation、chart panel 和 hover / active 状态
 - 冷灰正文
 - subtitle / eyebrow / section label 使用统一 quiet token，caption / chart note / legend 使用弱 caption token
-- aqua cyan 作为主强调色，deep electric blue 作为辅助强调
-- muted indigo / violet 作为少量空间光
-- teal 用于质量 / 成功层级，soft coral 用于风险层级
-- 少量 amber 暖光点缀可以存在，但不能超过重点提示角色
+- cyan / teal 作为主强调色，electric blue 作为辅助强调
+- muted violet / indigo 作为空间光
+- mint 用于质量 / 成功层级，soft coral 用于风险层级
+- amber / champagne 不进入默认主色，只作为 `?tone=champagne` 可选版
 - 克制但有层次的动态背景
 - 背景顶部、底部和左右不能有黑色硬边、mask 硬线或 blur 接缝
 - 顶部 controls 区域不能形成横向黑色硬边或黑色轮廓
@@ -57,10 +59,11 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 ## 当前状态
 
 - 已把页面内容回正为“AI Agent 工作流发布会”主题。
-- 已把默认视觉从沉闷冷灰 / token demo 感升级为 Expressive Premium Dark Tech。
+- 已把默认 tone 改为 `agent-lab`，无参数链接等价于 Original Agent Skill Lab Palette。
+- 已读取并参考早期项目 `/Users/water/Documents/系统操作/agent-skill-html-deck`，提取其 deep navy、cyan、violet、mint 和 hover 语言作为默认色彩母版。
 - 已保留 `?tone=champagne` 作为可选黑金版本，并隔离 `visual` / `aurora` 实验增强版，避免污染默认链接。
-- 已补充 cyan、electric blue、muted violet、teal、amber、soft coral 的 token 化 palette，并让背景、Agenda、Progress、卡片和图表共享这套变量。
-- 已将默认主题继续升级到 `Expressive Premium Dark Tech`，新增更自由的 mesh / halo / ribbon / aurora 背景层，以及更亮的 aqua / electric blue / muted indigo palette。
+- 已补充 cyan、teal、electric blue、muted violet、indigo、mint、soft coral 的 token 化 palette，并让背景、Agenda、Progress、卡片和图表共享这套变量。
+- 已保留 mesh / halo / ribbon / aurora 背景层，但默认色彩回到旧项目母版的左 cyan / 右 violet 深蓝黑空间感。
 - 已统一 subtitle、eyebrow、caption、chart note、legend 的 foreground 角色，避免普通说明文字随机使用 cyan / blue / violet / amber / coral。
 - 已修复顶部动态背景黑色硬边：取消 app 顶部硬线性压暗，让 DynamicBackground 的 blur / glow / halo 层向 viewport 外延展。
 - 已把 Pinned Agenda 改为右侧舞台 responsive reflow，而不是整体缩小 16:9 画布。

@@ -53,7 +53,7 @@ export const slides: Slide[] = [
     ...slideMeta[0],
     content: (
       <div className="cover-layout">
-        <div className="cover-kicker">Expressive Premium Dark Tech</div>
+        <div className="cover-kicker">Original Agent Skill Lab Palette</div>
         <h1>AI Agent 工作流发布会</h1>
         <p>从工具调用到自动化协作系统</p>
         <div className="cover-orbit">
@@ -222,7 +222,7 @@ export const slides: Slide[] = [
           <HorizontalBarBlock title="html-presentation-deck 的默认能力覆盖" data={deckCapabilities} />
           <div className="metric-column">
             <MetricCard label="Stable URL" value="Live" detail="默认公开链接保持为 GitHub Pages 推荐版。" tone="green" />
-            <MetricCard label="Default theme" value="Expressive" detail="Expressive Premium Dark Tech 是当前稳定默认版。" tone="warm" />
+            <MetricCard label="Default tone" value="agent-lab" detail="默认配色来自早期 agent-skill-html-deck 色彩母版。" tone="warm" />
           </div>
         </div>
       </div>
@@ -260,7 +260,7 @@ export const slides: Slide[] = [
             rows={[
               ['当前主题', 'AI Agent 工作流发布会', '避免后续偏成泛技术文档'],
               ['稳定链接', 'GitHub Pages URL', '让设备共享同一预览入口'],
-              ['默认基线', 'Expressive Dark Tech', '保护自由但统一的 AI 发布会视觉风格'],
+              ['默认基线', 'agent-lab palette', '保护旧项目母版里的 cyan / violet 深色科技感'],
               ['下一步', '待验证、待部署、待设计 QA', '让 Codex 接手即可继续'],
             ]}
           />
@@ -308,7 +308,7 @@ export const slides: Slide[] = [
         <SlideHeader eyebrow="Theme boundary" title="正式默认版只做一件事：稳定、统一、可演讲" />
         <div className="decision-grid theme-boundary-grid">
           {[
-            ['Default', '深石墨 / 深蓝黑背景，冷灰正文，青蓝、电蓝、低饱和紫蓝形成受控层次。'],
+            ['Default', '深 navy / blue black 背景，cyan / teal 主强调，muted violet / indigo 形成空间光。'],
             ['Cards', '同一边框、同一透明度、同一 hover 反馈。'],
             ['Charts', '图表只服务观点，不把页面做成 dashboard。'],
             ['Motion', '背景克制，动效只强化层级与进入节奏。'],
@@ -332,7 +332,7 @@ export const slides: Slide[] = [
         <div className="roadmap">
           {[
             ['Phase 01', '内容结构化', '把主题、章节、页面观点和图表数据沉淀为更清晰的内容模型。'],
-            ['Phase 02', '视觉基线库', '默认 Expressive Premium Dark Tech、实验 champagne / aurora、Design QA 检查表独立维护。'],
+            ['Phase 02', '视觉基线库', '默认 agent-lab palette、实验 champagne / aurora、Design QA 检查表独立维护。'],
             ['Phase 03', '导出与部署', '强化 PDF、GitHub Pages、离线预览与多设备交接的一致体验。'],
             ['Phase 04', '生产系统', '从生成一套 PPT，升级为持续迭代的网页式演示文稿流水线。'],
           ].map(([phase, title, detail]) => (

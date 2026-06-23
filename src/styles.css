@@ -1,4 +1,7 @@
-:root {
+:root,
+.tone-agent-lab,
+.tone-slate,
+[data-tone="agent-lab"] {
   color-scheme: dark;
   font-family:
     "Source Han Sans SC",
@@ -11,37 +14,61 @@
     sans-serif;
   line-height: 1.3;
   font-weight: 400;
-  color: #f1f8fb;
-  background: #07131f;
-  --surface-0: #07131f;
-  --surface-1: #0b1d2d;
-  --surface-2: rgba(18, 40, 58, 0.64);
-  --surface-3: rgba(28, 62, 82, 0.86);
-  --surface-border: rgba(185, 231, 238, 0.16);
-  --surface-glow: rgba(89, 224, 233, 0.2);
-  --surface-shadow: 0 28px 96px rgba(0, 0, 0, 0.4);
-  --hover-surface: rgba(31, 68, 89, 0.9);
-  --hover-border: rgba(119, 231, 241, 0.52);
-  --hover-glow: 0 22px 58px rgba(0, 0, 0, 0.34), 0 0 44px rgba(83, 217, 235, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.075);
-  --hover-lift: translateY(-2px);
-  --hover-transition: 190ms cubic-bezier(0.22, 1, 0.36, 1);
+  color: #e5eefc;
+  background: #050812;
+  --bg-page: #050812;
+  --bg-page-glow-cyan: rgba(56, 248, 255, 0.16);
+  --bg-page-glow-violet: rgba(139, 92, 246, 0.19);
+  --surface-stage: rgba(15, 23, 42, 0.88);
+  --surface-panel: rgba(2, 6, 23, 0.66);
+  --surface-card: rgba(15, 23, 42, 0.62);
+  --surface-card-hover: rgba(18, 30, 56, 0.9);
+  --surface-agenda: rgba(2, 6, 23, 0.72);
+  --border-subtle: rgba(226, 238, 252, 0.12);
+  --border-accent: rgba(56, 248, 255, 0.42);
+  --border-violet: rgba(139, 92, 246, 0.26);
+  --text-primary: #f6fbff;
+  --text-secondary: #cbd5e1;
+  --text-muted: #8290a6;
+  --text-eyebrow: #38f8ff;
+  --accent-cyan: #38f8ff;
+  --accent-aqua: #4ee6d8;
+  --accent-blue: #5cc8ff;
+  --accent-violet: #8b5cf6;
+  --accent-indigo: #a78bfa;
+  --accent-mint: #27f5a7;
+  --glow-cyan: rgba(56, 248, 255, 0.2);
+  --glow-violet: rgba(139, 92, 246, 0.18);
+  --shadow-card: 0 28px 90px rgba(0, 0, 0, 0.42);
+  --shadow-card-hover: 0 30px 90px rgba(0, 0, 0, 0.44), 0 0 40px rgba(56, 248, 255, 0.12), 0 0 46px rgba(139, 92, 246, 0.08);
+  --surface-0: var(--bg-page);
+  --surface-1: #0b1024;
+  --surface-2: var(--surface-stage);
+  --surface-3: var(--surface-card-hover);
+  --surface-border: var(--border-subtle);
+  --surface-glow: var(--glow-cyan);
+  --surface-shadow: var(--shadow-card);
+  --hover-surface: var(--surface-card-hover);
+  --hover-border: rgba(56, 248, 255, 0.58);
+  --hover-glow: var(--shadow-card-hover);
+  --hover-lift: translateY(-2px) scale(1.008);
+  --hover-transition: 200ms cubic-bezier(0.22, 1, 0.36, 1);
   --color-bg-base: var(--surface-0);
   --color-bg-deep: var(--surface-1);
-  --color-bg-panel: #122a3d;
-  --color-text-primary: #f1f8fb;
-  --color-text-secondary: #b2c9d5;
-  --color-text-soft: #7f98a6;
+  --color-bg-panel: #0f172a;
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-soft: var(--text-muted);
   --text-title: var(--color-text-primary);
-  --text-body: #ccdde5;
+  --text-body: #d6e3f1;
   --text-muted: var(--color-text-secondary);
-  --text-eyebrow: #9ed9e3;
-  --text-caption: #99b4c2;
-  --color-accent-primary: #64e4ef;
-  --color-accent-secondary: #6292ff;
-  --color-accent-tertiary: #8c76e8;
-  --color-accent-warm: #d7b16e;
-  --color-accent-success: #65d9bd;
-  --color-accent-risk: #ed8e9d;
+  --text-caption: #94a3b8;
+  --color-accent-primary: var(--accent-cyan);
+  --color-accent-secondary: var(--accent-blue);
+  --color-accent-tertiary: var(--accent-violet);
+  --color-accent-warm: var(--accent-indigo);
+  --color-accent-success: var(--accent-mint);
+  --color-accent-risk: #ef8fae;
   --chart-color-1: var(--color-accent-primary);
   --chart-color-2: var(--color-accent-secondary);
   --chart-color-3: var(--color-accent-tertiary);
@@ -49,40 +76,40 @@
   --chart-color-5: var(--color-accent-warm);
   --chart-color-6: var(--color-accent-risk);
   --ink: var(--text-title);
-  --ink-rgb: 237, 246, 250;
+  --ink-rgb: 246, 251, 255;
   --muted: var(--text-muted);
   --soft: var(--color-text-soft);
   --gold: var(--color-accent-primary);
-  --accent-tint: #c2fbff;
-  --accent-contrast: #04131c;
-  --gold-soft: rgba(100, 228, 239, 0.2);
+  --accent-tint: #d9feff;
+  --accent-contrast: #041019;
+  --gold-soft: rgba(56, 248, 255, 0.18);
   --cyan: var(--color-accent-secondary);
   --green: var(--color-accent-success);
   --warm: var(--color-accent-warm);
   --risk: var(--color-accent-risk);
-  --accent-rgb: 100, 228, 239;
-  --accent-2-rgb: 98, 146, 255;
-  --accent-3-rgb: 140, 118, 232;
-  --success-rgb: 101, 217, 189;
-  --warm-rgb: 215, 177, 110;
-  --risk-rgb: 237, 142, 157;
+  --accent-rgb: 56, 248, 255;
+  --accent-2-rgb: 92, 200, 255;
+  --accent-3-rgb: 139, 92, 246;
+  --success-rgb: 39, 245, 167;
+  --warm-rgb: 167, 139, 250;
+  --risk-rgb: 239, 143, 174;
   --bg-base-0: var(--color-bg-base);
   --bg-base-1: var(--color-bg-deep);
-  --bg-base-2: #13263a;
-  --panel-rgb: 18, 40, 58;
+  --bg-base-2: #04060d;
+  --panel-rgb: 15, 23, 42;
   --panel: var(--surface-2);
-  --panel-strong: rgba(20, 48, 68, 0.9);
+  --panel-strong: rgba(2, 6, 23, 0.86);
   --line: var(--surface-border);
   --shadow: var(--surface-shadow);
-  --bg-motion-opacity: 0.62;
-  --bg-glow-opacity: 0.6;
-  --bg-sweep-opacity: 0.4;
-  --bg-particle-opacity: 0.27;
+  --bg-motion-opacity: 0.58;
+  --bg-glow-opacity: 0.68;
+  --bg-sweep-opacity: 0.36;
+  --bg-particle-opacity: 0.24;
   --chart-ease: cubic-bezier(0.22, 1, 0.36, 1);
   /*
-    Expressive Premium Dark Tech:
-    one stable default visual system first; theme/tone variants may extend it
-    but must not pollute the default editorial + rich tech experience.
+    Original Agent Skill Lab Palette:
+    extracted from agent-skill-html-deck; default deep navy with cyan/violet
+    spatial light. Champagne and aurora remain optional isolated tones.
   */
   --baseline-bg-0: #040404;
   --baseline-bg-1: #0b0a09;
@@ -100,12 +127,12 @@
   --baseline-line: rgba(245, 239, 229, 0.13);
   --baseline-shadow: 0 28px 90px rgba(0, 0, 0, 0.5);
   --chart-primary: var(--chart-color-1);
-  --chart-primary-soft: rgba(99, 224, 243, 0.62);
+  --chart-primary-soft: rgba(56, 248, 255, 0.62);
   --chart-secondary: var(--chart-color-2);
-  --chart-secondary-soft: rgba(110, 168, 255, 0.48);
-  --chart-neutral: rgba(139, 154, 170, 0.58);
+  --chart-secondary-soft: rgba(92, 200, 255, 0.5);
+  --chart-neutral: rgba(148, 163, 184, 0.58);
   --chart-warm: var(--chart-color-5);
-  --chart-quiet: rgba(203, 229, 241, 0.64);
+  --chart-quiet: rgba(203, 213, 225, 0.68);
   --slide-pad: clamp(40px, 4.3vw, 74px);
   --title: clamp(44px, 4.5vw, 72px);
   --cover-title: clamp(56px, 5.8vw, 102px);
@@ -151,86 +178,15 @@ button:disabled {
   height: 100dvh;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 18% 0%, rgba(var(--accent-rgb), 0.14), transparent 48%),
-    radial-gradient(ellipse at 86% 6%, rgba(var(--accent-3-rgb), 0.13), transparent 52%),
-    radial-gradient(ellipse at 54% 96%, rgba(var(--accent-2-rgb), 0.12), transparent 55%),
-    linear-gradient(137deg, #07131f 0%, #0d2134 42%, #091522 72%, #07111b 100%);
+    radial-gradient(circle at 15% 10%, rgba(var(--accent-rgb), 0.16), transparent 34rem),
+    radial-gradient(circle at 86% 20%, rgba(var(--accent-3-rgb), 0.18), transparent 38rem),
+    radial-gradient(circle at 48% 110%, rgba(var(--success-rgb), 0.08), transparent 32rem),
+    linear-gradient(135deg, #050812 0%, #0b1024 55%, #04060d 100%);
   isolation: isolate;
 }
 
-.tone-slate {
-  --surface-0: #07131f;
-  --surface-1: #0b1d2d;
-  --surface-2: rgba(18, 40, 58, 0.64);
-  --surface-3: rgba(28, 62, 82, 0.86);
-  --surface-border: rgba(185, 231, 238, 0.16);
-  --surface-glow: rgba(89, 224, 233, 0.2);
-  --surface-shadow: 0 28px 96px rgba(0, 0, 0, 0.4);
-  --hover-surface: rgba(31, 68, 89, 0.9);
-  --hover-border: rgba(119, 231, 241, 0.52);
-  --hover-glow: 0 22px 58px rgba(0, 0, 0, 0.34), 0 0 44px rgba(83, 217, 235, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.075);
-  --color-bg-base: var(--surface-0);
-  --color-bg-deep: var(--surface-1);
-  --color-bg-panel: #122a3d;
-  --color-text-primary: #f1f8fb;
-  --color-text-secondary: #b2c9d5;
-  --color-text-soft: #7f98a6;
-  --text-title: var(--color-text-primary);
-  --text-body: #ccdde5;
-  --text-muted: var(--color-text-secondary);
-  --text-eyebrow: #9ed9e3;
-  --text-caption: #99b4c2;
-  --color-accent-primary: #64e4ef;
-  --color-accent-secondary: #6292ff;
-  --color-accent-tertiary: #8c76e8;
-  --color-accent-warm: #d7b16e;
-  --color-accent-success: #65d9bd;
-  --color-accent-risk: #ed8e9d;
-  --chart-color-1: var(--color-accent-primary);
-  --chart-color-2: var(--color-accent-secondary);
-  --chart-color-3: var(--color-accent-tertiary);
-  --chart-color-4: var(--color-accent-success);
-  --chart-color-5: var(--color-accent-warm);
-  --chart-color-6: var(--color-accent-risk);
-  --ink: var(--text-title);
-  --ink-rgb: 237, 246, 250;
-  --muted: var(--text-muted);
-  --soft: var(--color-text-soft);
-  --gold: var(--color-accent-primary);
-  --accent-tint: #c2fbff;
-  --accent-contrast: #04131c;
-  --gold-soft: rgba(100, 228, 239, 0.2);
-  --cyan: var(--color-accent-secondary);
-  --green: var(--color-accent-success);
-  --warm: var(--color-accent-warm);
-  --risk: var(--color-accent-risk);
-  --accent-rgb: 100, 228, 239;
-  --accent-2-rgb: 98, 146, 255;
-  --accent-3-rgb: 140, 118, 232;
-  --success-rgb: 101, 217, 189;
-  --warm-rgb: 215, 177, 110;
-  --risk-rgb: 237, 142, 157;
-  --bg-base-0: var(--color-bg-base);
-  --bg-base-1: var(--color-bg-deep);
-  --bg-base-2: #13263a;
-  --panel-rgb: 18, 40, 58;
-  --panel: var(--surface-2);
-  --panel-strong: rgba(20, 48, 68, 0.9);
-  --line: var(--surface-border);
-  --bg-motion-opacity: 0.68;
-  --bg-glow-opacity: 0.64;
-  --bg-sweep-opacity: 0.46;
-  --bg-particle-opacity: 0.3;
-  --chart-primary: var(--chart-color-1);
-  --chart-primary-soft: rgba(99, 224, 243, 0.62);
-  --chart-secondary: var(--chart-color-2);
-  --chart-secondary-soft: rgba(110, 168, 255, 0.48);
-  --chart-neutral: rgba(139, 154, 170, 0.58);
-  --chart-warm: var(--chart-color-5);
-  --chart-quiet: rgba(203, 229, 241, 0.64);
-}
-
 .tone-champagne {
+  --bg-page: #050505;
   --surface-0: #050505;
   --surface-1: #0d0c0b;
   --surface-2: rgba(20, 20, 19, 0.68);
@@ -296,6 +252,7 @@ button:disabled {
 }
 
 .tone-aurora {
+  --bg-page: #040708;
   --surface-0: #040708;
   --surface-1: #071112;
   --surface-2: rgba(8, 20, 22, 0.68);
@@ -367,26 +324,28 @@ button:disabled {
 .deck-background {
   z-index: -3;
   overflow: hidden;
-  background: var(--surface-0);
+  background:
+    radial-gradient(circle at 15% 10%, rgba(var(--accent-rgb), 0.12), transparent 30rem),
+    radial-gradient(circle at 86% 20%, rgba(var(--accent-3-rgb), 0.14), transparent 34rem),
+    linear-gradient(135deg, #050812 0%, #0b1024 55%, #04060d 100%);
 }
 
 .deck-bg-base {
   inset: -24%;
   background:
-    radial-gradient(ellipse at 18% 18%, rgba(var(--accent-rgb), 0.18), transparent 42%),
-    radial-gradient(ellipse at 82% 22%, rgba(var(--accent-3-rgb), 0.14), transparent 48%),
-    radial-gradient(ellipse at 64% 92%, rgba(var(--accent-2-rgb), 0.14), transparent 54%),
-    radial-gradient(ellipse at 16% 86%, rgba(var(--success-rgb), 0.075), transparent 48%),
-    linear-gradient(135deg, #07131f 0%, #0d2134 36%, #0a1625 68%, #07111b 100%);
+    radial-gradient(circle at 14% 12%, rgba(var(--accent-rgb), 0.17), transparent 30rem),
+    radial-gradient(circle at 88% 22%, rgba(var(--accent-3-rgb), 0.18), transparent 36rem),
+    radial-gradient(circle at 44% 106%, rgba(var(--success-rgb), 0.095), transparent 34rem),
+    linear-gradient(135deg, #050812 0%, #0b1024 55%, #04060d 100%);
 }
 
 .deck-bg-depth {
   inset: -34%;
   opacity: 0.86;
   background:
-    conic-gradient(from 230deg at 66% 24%, transparent 0deg, rgba(var(--accent-2-rgb), 0.15) 42deg, transparent 112deg, rgba(var(--accent-rgb), 0.12) 188deg, transparent 260deg, rgba(var(--warm-rgb), 0.055) 316deg, transparent 360deg),
-    radial-gradient(ellipse at 50% 18%, rgba(255, 255, 255, 0.06), transparent 36%),
-    radial-gradient(ellipse at 8% 58%, rgba(var(--success-rgb), 0.055), transparent 44%);
+    conic-gradient(from 226deg at 68% 30%, transparent 0deg, rgba(var(--accent-3-rgb), 0.16) 48deg, transparent 120deg, rgba(var(--accent-rgb), 0.12) 196deg, transparent 268deg, rgba(var(--success-rgb), 0.055) 326deg, transparent 360deg),
+    radial-gradient(ellipse at 42% 8%, rgba(255, 255, 255, 0.052), transparent 40%),
+    radial-gradient(ellipse at 10% 52%, rgba(var(--accent-rgb), 0.06), transparent 48%);
   filter: blur(42px);
   transform: translateZ(0);
   animation: depthShift 9s var(--chart-ease) infinite alternate;
@@ -396,9 +355,9 @@ button:disabled {
   inset: -38% -30% -22%;
   opacity: calc(var(--bg-glow-opacity) * 0.82);
   background:
-    radial-gradient(ellipse at 44% 2%, rgba(var(--accent-rgb), 0.2), transparent 44%),
-    radial-gradient(ellipse at 72% 10%, rgba(var(--accent-3-rgb), 0.16), transparent 46%),
-    radial-gradient(ellipse at 28% 18%, rgba(var(--accent-2-rgb), 0.11), transparent 48%);
+    radial-gradient(ellipse at 24% 4%, rgba(var(--accent-rgb), 0.2), transparent 44%),
+    radial-gradient(ellipse at 78% 18%, rgba(var(--accent-3-rgb), 0.18), transparent 48%),
+    radial-gradient(ellipse at 46% 18%, rgba(var(--accent-2-rgb), 0.09), transparent 48%);
   filter: blur(68px);
   animation: haloFloat 10s ease-in-out infinite alternate;
 }
@@ -426,7 +385,7 @@ button:disabled {
 
 .deck-bg-aurora-a {
   inset: auto auto -26vh -32vw;
-  background: linear-gradient(100deg, rgba(var(--accent-rgb), 0.52), rgba(var(--accent-2-rgb), 0.22), rgba(var(--success-rgb), 0.1), transparent 76%);
+  background: linear-gradient(100deg, rgba(var(--accent-rgb), 0.48), rgba(var(--success-rgb), 0.16), rgba(var(--accent-2-rgb), 0.12), transparent 76%);
   animation: auroraA 5.2s ease-in-out infinite alternate;
 }
 
@@ -440,7 +399,7 @@ button:disabled {
   inset: -24%;
   opacity: calc(var(--bg-sweep-opacity) * 0.7);
   background:
-    linear-gradient(116deg, transparent 0 33%, rgba(var(--accent-2-rgb), 0.09) 43%, rgba(var(--accent-rgb), 0.13) 50%, rgba(var(--accent-3-rgb), 0.08) 57%, transparent 70%),
+    linear-gradient(116deg, transparent 0 33%, rgba(var(--accent-3-rgb), 0.09) 43%, rgba(var(--accent-rgb), 0.12) 50%, rgba(var(--accent-2-rgb), 0.07) 57%, transparent 70%),
     linear-gradient(72deg, transparent 0 42%, rgba(255, 255, 255, 0.055) 52%, transparent 63%);
   filter: blur(28px);
   mix-blend-mode: screen;
@@ -451,7 +410,7 @@ button:disabled {
   inset: -18%;
   opacity: calc(var(--bg-sweep-opacity) * 0.76);
   background:
-    linear-gradient(102deg, transparent 10%, rgba(var(--accent-rgb), 0.11) 42%, rgba(var(--accent-2-rgb), 0.07) 54%, transparent 76%),
+    linear-gradient(102deg, transparent 10%, rgba(var(--accent-rgb), 0.105) 42%, rgba(var(--accent-3-rgb), 0.07) 56%, transparent 76%),
     radial-gradient(ellipse at 50% -12%, rgba(var(--ink-rgb), 0.08), transparent 56%);
   filter: blur(16px);
   animation: stageSweep 3.6s ease-in-out infinite alternate;
@@ -462,7 +421,7 @@ button:disabled {
   inset: -18%;
   opacity: calc(var(--bg-sweep-opacity) * 0.58);
   background:
-    linear-gradient(118deg, transparent 0 32%, rgba(var(--accent-2-rgb), 0.12) 44%, rgba(var(--accent-rgb), 0.11) 50%, rgba(var(--accent-3-rgb), 0.065) 58%, transparent 72%),
+    linear-gradient(118deg, transparent 0 32%, rgba(var(--accent-3-rgb), 0.1) 44%, rgba(var(--accent-rgb), 0.12) 50%, rgba(var(--success-rgb), 0.055) 58%, transparent 72%),
     linear-gradient(82deg, transparent 0 46%, rgba(255, 255, 255, 0.055) 52%, transparent 62%);
   transform: translate3d(-12vw, 0, 0);
   animation: commandSweep 3.2s var(--chart-ease) infinite alternate;
@@ -706,12 +665,13 @@ button:disabled {
   grid-template-columns: 56px 164px;
   overflow: hidden;
   border: 1px solid rgba(var(--ink-rgb), 0.12);
-  border-radius: 10px;
+  border-radius: 14px;
   background:
-    radial-gradient(ellipse at 0% 0%, rgba(var(--accent-rgb), 0.1), transparent 52%),
-    linear-gradient(160deg, rgba(255, 255, 255, 0.065), rgba(var(--accent-2-rgb), 0.035)),
-    rgba(var(--panel-rgb), 0.58);
-  box-shadow: 0 24px 86px rgba(0, 0, 0, 0.34), 0 0 40px rgba(var(--accent-rgb), 0.08);
+    radial-gradient(ellipse at 0% 0%, rgba(var(--accent-rgb), 0.12), transparent 52%),
+    radial-gradient(ellipse at 100% 100%, rgba(var(--accent-3-rgb), 0.09), transparent 56%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(var(--accent-rgb), 0.026)),
+    var(--surface-agenda);
+  box-shadow: 0 24px 86px rgba(0, 0, 0, 0.34), 0 0 38px rgba(var(--accent-rgb), 0.09);
   backdrop-filter: blur(24px) saturate(1.18);
   transition:
     width 220ms var(--chart-ease),
@@ -727,10 +687,11 @@ button:disabled {
   width: 220px;
   border-color: rgba(var(--accent-rgb), 0.34);
   background:
-    radial-gradient(ellipse at 0% 0%, rgba(var(--accent-rgb), 0.14), transparent 52%),
-    linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(var(--accent-2-rgb), 0.052)),
-    rgba(var(--panel-rgb), 0.78);
-  box-shadow: 0 28px 94px rgba(0, 0, 0, 0.38), 0 0 52px rgba(var(--accent-rgb), 0.12);
+    radial-gradient(ellipse at 0% 0%, rgba(var(--accent-rgb), 0.16), transparent 52%),
+    radial-gradient(ellipse at 100% 100%, rgba(var(--accent-3-rgb), 0.12), transparent 56%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.075), rgba(var(--accent-rgb), 0.04)),
+    rgba(2, 6, 23, 0.82);
+  box-shadow: 0 28px 94px rgba(0, 0, 0, 0.38), 0 0 52px rgba(var(--accent-rgb), 0.13);
 }
 
 .agenda-rail {
@@ -834,13 +795,14 @@ button:disabled {
   border-color: rgba(var(--accent-rgb), 0.62);
   background:
     radial-gradient(ellipse at 0% 50%, rgba(var(--accent-rgb), 0.18), transparent 60%),
-    linear-gradient(90deg, rgba(var(--accent-rgb), 0.16), rgba(var(--accent-2-rgb), 0.075)),
-    rgba(var(--panel-rgb), 0.72);
+    radial-gradient(ellipse at 100% 50%, rgba(var(--accent-3-rgb), 0.12), transparent 62%),
+    linear-gradient(90deg, rgba(var(--accent-rgb), 0.16), rgba(var(--success-rgb), 0.08) 52%, rgba(var(--accent-3-rgb), 0.07)),
+    rgba(2, 6, 23, 0.74);
   box-shadow: inset 3px 0 0 rgba(var(--accent-rgb), 0.84), 0 12px 32px rgba(var(--accent-rgb), 0.14);
 }
 
 .agenda-item-number {
-  color: var(--color-accent-secondary);
+  color: var(--color-accent-primary);
   opacity: 0.9;
 }
 
@@ -884,12 +846,12 @@ button:disabled {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border: 1px solid var(--surface-border);
-  border-radius: 18px;
+  border-radius: 24px;
   background:
-    radial-gradient(ellipse at 82% 12%, rgba(var(--accent-rgb), 0.14), transparent 38%),
-    radial-gradient(ellipse at 8% 96%, rgba(var(--accent-2-rgb), 0.09), transparent 38%),
-    radial-gradient(ellipse at 44% -12%, rgba(var(--accent-3-rgb), 0.075), transparent 44%),
-    linear-gradient(150deg, rgba(255, 255, 255, 0.074), rgba(var(--accent-3-rgb), 0.032) 38%, rgba(255, 255, 255, 0.02)),
+    radial-gradient(ellipse at 8% 8%, rgba(var(--accent-rgb), 0.16), transparent 38%),
+    radial-gradient(ellipse at 96% 90%, rgba(var(--accent-3-rgb), 0.14), transparent 42%),
+    radial-gradient(ellipse at 46% -12%, rgba(var(--accent-2-rgb), 0.06), transparent 44%),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.86)),
     var(--surface-2);
   box-shadow:
     0 34px 118px rgba(0, 0, 0, 0.48),
@@ -914,9 +876,9 @@ button:disabled {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(var(--accent-rgb), 0.11), transparent 20%, transparent 82%, rgba(var(--accent-2-rgb), 0.07)),
-    radial-gradient(ellipse at 0% 100%, rgba(var(--accent-rgb), 0.095), transparent 30%),
-    radial-gradient(ellipse at 100% 0%, rgba(var(--accent-3-rgb), 0.068), transparent 28%);
+    linear-gradient(90deg, rgba(var(--accent-rgb), 0.105), transparent 22%, transparent 78%, rgba(var(--accent-3-rgb), 0.085)),
+    radial-gradient(ellipse at 0% 100%, rgba(var(--accent-rgb), 0.075), transparent 30%),
+    radial-gradient(ellipse at 100% 0%, rgba(var(--accent-3-rgb), 0.08), transparent 28%);
   opacity: 0.76;
   pointer-events: none;
 }
@@ -966,7 +928,7 @@ button:disabled {
   height: 100%;
   border-radius: inherit;
   background:
-    linear-gradient(90deg, var(--chart-color-1) 0%, var(--chart-color-2) 48%, var(--chart-color-3) 78%, var(--chart-color-1) 100%);
+    linear-gradient(90deg, var(--chart-color-1) 0%, var(--chart-color-4) 42%, var(--chart-color-3) 78%, var(--chart-color-1) 100%);
   box-shadow:
     0 0 22px rgba(var(--accent-rgb), 0.48),
     0 0 40px rgba(var(--accent-2-rgb), 0.22);
@@ -2472,7 +2434,7 @@ td {
     width: 16in;
     height: 9in;
     overflow: visible;
-    background: #050505 !important;
+    background: #050812 !important;
   }
 
   .top-controls,
@@ -2499,7 +2461,7 @@ td {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Expressive Premium Dark Tech / optional Champagne tone                      */
+/* Original Agent Skill Lab Palette / optional Champagne tone                  */
 /* -------------------------------------------------------------------------- */
 
 .deck-app.theme-editorial.tone-champagne {

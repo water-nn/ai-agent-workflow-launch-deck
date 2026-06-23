@@ -1,13 +1,16 @@
 import { useEffect, useMemo, useState } from 'react'
 
 export type DeckTheme = 'editorial' | 'visual'
-export type DeckTone = 'slate' | 'champagne' | 'aurora'
+export type DeckTone = 'agent-lab' | 'champagne' | 'aurora'
 
 const readPreferences = () => {
   const params = new URLSearchParams(window.location.search)
   const theme = params.get('theme') === 'visual' ? 'visual' : 'editorial'
   const requestedTone = params.get('tone')
-  const tone = requestedTone === 'champagne' || requestedTone === 'aurora' ? requestedTone : 'slate'
+  const tone =
+    requestedTone === 'champagne' || requestedTone === 'aurora'
+      ? requestedTone
+      : 'agent-lab'
   return { theme, tone } satisfies { theme: DeckTheme; tone: DeckTone }
 }
 
