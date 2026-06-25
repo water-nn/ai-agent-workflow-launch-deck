@@ -1,5 +1,5 @@
 import type { Slide } from './deck/types'
-import { BarChartBlock, DataTableBlock, HorizontalBarBlock, LineChartBlock, MetricCard } from './deck/charts'
+import { BarChartBlock, DataTableBlock, LineChartBlock, MetricCard } from './deck/charts'
 import { MediaImage, MediaVideo } from './deck/media/MediaPreview'
 import { FlowNode, GlassCard, Pill, ScrollableCard, SlideHeader, StageLine } from './deck/layouts/SlideBlocks'
 
@@ -38,16 +38,18 @@ const problemItems = [
   ['交付不可复用', '一次成功交付没有沉淀成下一次的默认能力。'],
 ]
 
-const deckCapabilities = [
-  { label: 'React / Vite / TS', value: 92 },
-  { label: '16:9 演示舞台', value: 96 },
-  { label: '键盘与全屏', value: 88 },
-  { label: 'Agenda / 进度', value: 90 },
-  { label: '动态背景', value: 78 },
-  { label: '图表动效', value: 82 },
-  { label: 'GitHub Pages', value: 86 },
-  { label: '本地双击预览', value: 84 },
-]
+const mediaBase = '/ai-agent-workflow-launch-deck/media/'
+const mediaImageSrc = `${mediaBase}agent-workflow-inspection.svg`
+const mediaVideoPoster = `${mediaBase}agent-workflow-video-poster.svg`
+const mediaVideoSrc = `${mediaBase}agent-workflow-demo.webm`
+
+const longHandoffText = `02｜上下文交接与状态记录
+
+当一个 Agent 工作流跨越多次会话、多台设备或多个执行阶段时，最容易丢失的不是代码本身，而是“为什么这样做”的过程信息。为了让 Codex 能够稳定接续工作，每一次关键修改都应该留下可读的状态记录：当前目标是什么、已经完成了什么、哪些方案被否定、哪些问题还没有解决、下一步应该从哪里开始、哪些文件不能随意覆盖、哪些视觉判断需要人工复查。
+
+在 HTML PPT 项目中，这类状态记录尤其重要。因为它不仅包含代码状态，也包含视觉标准、交互原则、部署方式、审美偏好和跨设备协作规则。如果没有 PROJECT_STATUS.md，另一台电脑上的 Codex 很可能只看到当前代码，却不知道前面为什么要从黑金改成 agent-lab，为什么 pinned Agenda 不能整体缩放，为什么媒体内容必须支持 lightbox，为什么页面级不能滚动而卡片内部可以滚动。
+
+因此，状态记录不是额外文档，而是 Agent Skill 工作流的一部分。它让一次性的任务变成可接续的系统，让每次修改都有上下文，让未来的 Codex 不需要从零理解项目，也能继续沿着正确方向工作。每次完成修改后，都应该同步更新 PROJECT_STATUS.md，并和代码一起 commit / push。这样无论是在家里的 Mac，还是公司的 Windows 电脑，都可以通过 git pull、阅读状态文件、运行 build，然后继续同一个工作流。`
 
 export const slides: Slide[] = [
   {
@@ -213,38 +215,31 @@ export const slides: Slide[] = [
   {
     ...slideMeta[8],
     content: (
-      <div className="data-layout">
+      <div className="media-lab-layout">
         <SlideHeader
-          className="compact-slide-header"
-          eyebrow="Deck production system"
-          title="这不是 UI 模板测试，而是网页式演示生产系统"
-        />
-        <div className="coverage-grid deck-system-grid">
-          <div className="deck-system-stack">
-            <HorizontalBarBlock title="html-presentation-deck 的默认能力覆盖" data={deckCapabilities} />
-            <div className="media-showcase-grid">
-              <MediaImage
-                title="Image lightbox"
-                caption="截图 / 设计稿默认 contain，点击后在舞台上方放大查看。"
-                alt="AI Agent deck screenshot mock with agenda, stage and cards"
-              >
-                <div className="deck-shot-mock">
-                  <div className="shot-topbar" />
-                  <div className="shot-agenda" />
-                  <div className="shot-stage">
-                    <span />
-                    <strong />
-                    <em />
-                  </div>
-                </div>
-              </MediaImage>
-              <MediaVideo title="Video preview" caption="视频占位支持播放、进度、音量与放大，默认不自动播放。" />
-            </div>
-          </div>
-          <div className="metric-column">
-            <MetricCard label="Stable URL" value="Live" detail="默认公开链接保持为 GitHub Pages 推荐版。" tone="green" />
-            <MetricCard label="Default tone" value="agent-lab" detail="默认配色来自早期 agent-skill-html-deck 色彩母版。" tone="warm" />
-          </div>
+          eyebrow="Deck media lab"
+          title="媒体内容不是嵌进去就结束，而是要能检查、放大和播放"
+        >
+          图片和视频都在演示舞台内保持比例；进入 lightbox / modal 后，方向键不会误触发翻页。
+        </SlideHeader>
+        <div className="media-lab-grid">
+          <MediaImage
+            title="Image inspection"
+            caption="左侧示例用于截图、架构图或设计稿：卡片内等比 contain，点击后居中放大检查细节。"
+            alt="AI Agent workflow screenshot showing agenda, presentation stage and delivery cards"
+            src={mediaImageSrc}
+          />
+          <MediaVideo
+            title="Workflow recording"
+            caption="右侧示例用于产品录屏或交互视频：可播放、暂停、拖动进度、调节音量，并放大到 modal。"
+            src={mediaVideoSrc}
+            poster={mediaVideoPoster}
+          />
+        </div>
+        <div className="media-lab-notes" aria-label="媒体能力检查点">
+          {['图片可点开 lightbox', '视频默认不自动播放', '弹层打开时阻止翻页', '关闭 modal 后视频暂停'].map((item) => (
+            <Pill key={item}>{item}</Pill>
+          ))}
         </div>
       </div>
     ),
@@ -302,40 +297,25 @@ export const slides: Slide[] = [
   {
     ...slideMeta[11],
     content: (
-      <div className="matrix-layout">
-        <SlideHeader eyebrow="Act V · Upgrade" title="companion design skills 负责把可运行变成可发布" />
-        <div className="problem-matrix design-qa-grid">
-          <GlassCard className="problem-card">
-            <span>QA 01</span>
-            <strong>ui-ux-pro-max</strong>
-            <p>检查控件、状态、响应式、可读性和演示场景一致性。</p>
-          </GlassCard>
-          <ScrollableCard className="problem-card scroll-demo-card" label="QA 02" title="长内容卡片">
-            <p>当单张卡片需要承载较长验收清单时，页面仍保持 16:9 无滚动，只让卡片内部建立局部滚动。</p>
-            <ul>
-              <li>保留同组卡片高度，不把这一页撑破。</li>
-              <li>滚动区域使用细滚动条和上下 fade，避免廉价表格感。</li>
-              <li>鼠标、触控板和键盘焦点都能进入局部内容。</li>
-              <li>卡片滚动不会永久劫持左右翻页。</li>
-              <li>reduced motion 下关闭位移，仍保留边框和 surface 反馈。</li>
-              <li>内容过长时优先局部滚动，不把整张 slide 缩小。</li>
-            </ul>
+      <div className="scroll-lab-layout">
+        <SlideHeader eyebrow="Act V · Upgrade" title="工作流信息有长有短，版式仍然要稳定">
+          四张卡片保持同高；只有内容溢出的第 2 张卡片内部滚动，整页不滚动，也不整体缩放。
+        </SlideHeader>
+        <div className="scroll-card-grid">
+          <ScrollableCard className="scroll-lab-card" label="01｜视觉基准" title="默认主题要像发布会">
+            <p>agent-lab 默认版继续使用 deep navy / blue black、cyan / teal 和 muted violet 的空间光，服务正式远程链接。</p>
           </ScrollableCard>
-          <GlassCard className="problem-card">
-            <span>QA 03</span>
-            <strong>frontend-design</strong>
-            <p>校准视觉观点、字体层级、节奏和独特但克制的 signature。</p>
-          </GlassCard>
-          <GlassCard className="problem-card">
-            <span>QA 04</span>
-            <strong>视觉回归</strong>
-            <p>每次功能变化后重新检查默认链接，而不是只看实验主题。</p>
-          </GlassCard>
-          <GlassCard className="problem-card">
-            <span>QA 05</span>
-            <strong>发布会感</strong>
-            <p>让页面像产品发布会，而不是 dashboard 拼贴或组件陈列。</p>
-          </GlassCard>
+          <ScrollableCard className="scroll-lab-card scroll-lab-card-long" label="02｜上下文交接与状态记录" title="跨设备接续必须留下过程">
+            {longHandoffText.split('\n\n').map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </ScrollableCard>
+          <ScrollableCard className="scroll-lab-card" label="03｜媒体检查" title="图片和视频都要可验证">
+            <p>截图、设计稿和产品录屏不能只是嵌进去，需要支持放大、播放、暂停、关闭暂停和弹层优先级。</p>
+          </ScrollableCard>
+          <ScrollableCard className="scroll-lab-card" label="04｜Design QA" title="辅助 skill 做审美复查">
+            <p>ui-ux-pro-max 与 frontend-design 参与检查信息架构、视觉层级、间距、交互状态和演讲场景可读性。</p>
+          </ScrollableCard>
         </div>
       </div>
     ),

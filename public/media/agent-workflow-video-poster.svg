@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Agent workflow video poster</title>
+  <desc id="desc">A dark poster for an AI agent workflow recording with a play symbol and luminous timeline.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#04101f"/>
+      <stop offset="0.58" stop-color="#080e21"/>
+      <stop offset="1" stop-color="#02040c"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" x2="1">
+      <stop offset="0" stop-color="#38f8ff"/>
+      <stop offset="0.5" stop-color="#27f5a7"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="20" result="blur"/>
+      <feBlend in="SourceGraphic" in2="blur"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <circle cx="230" cy="92" r="260" fill="#38f8ff" opacity="0.16"/>
+  <circle cx="1060" cy="166" r="310" fill="#8b5cf6" opacity="0.18"/>
+  <path d="M120 512C308 410 430 560 606 440C778 324 914 404 1160 286" fill="none" stroke="url(#line)" stroke-width="8" opacity="0.7" filter="url(#softGlow)"/>
+  <rect x="156" y="104" width="968" height="508" rx="42" fill="#071329" opacity="0.72" stroke="#e2eefc" stroke-opacity="0.14"/>
+  <circle cx="640" cy="350" r="106" fill="#061224" stroke="#38f8ff" stroke-opacity="0.44" stroke-width="3" filter="url(#softGlow)"/>
+  <path d="M612 294l94 56l-94 56z" fill="#38f8ff"/>
+  <text x="212" y="184" fill="#38f8ff" font-family="Arial, sans-serif" font-size="22" font-weight="700">WORKFLOW RECORDING</text>
+  <text x="212" y="544" fill="#f6fbff" font-family="Arial, sans-serif" font-size="42" font-weight="800">Play / Pause / Progress / Volume</text>
+  <text x="214" y="588" fill="#94a3b8" font-family="Arial, sans-serif" font-size="24">A local replaceable video asset for the HTML deck media modal.</text>
+</svg>

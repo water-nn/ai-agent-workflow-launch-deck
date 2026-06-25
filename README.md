@@ -194,3 +194,20 @@ base: '/ai-agent-workflow-launch-deck/'
 ```
 
 图表页不要堆太多组件。每页应服务一个数据结论，保留足够留白，避免 dashboard 拼贴感。左右布局要看视觉重量，而不是机械地一边文字一边卡片。装饰性英文标签必须放在 safe area，不能压住正文、图表或卡片。
+
+## 本轮真实交互增强
+
+2026-06-25 Windows 版本已经把交互落到源码：
+
+- 第 9 页是媒体能力页：图片可点开 lightbox，视频是本地 `<video>` 资源，可播放、暂停、拖进度、调音量、放大到 modal。
+- 第 12 页是长内容卡片页：4 张卡片等高，第 2 张长文本只在卡片内部滚动，整页不滚动。
+- Agenda / stage / slide-frame 使用共享高度和间距 token，normal / pinned 状态下保持同高，`slide-frame` 不使用整体缩放。
+
+相关源码：
+
+```text
+src/slides.tsx
+src/styles.css
+src/deck/media/MediaPreview.tsx
+public/media/
+```

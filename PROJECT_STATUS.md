@@ -98,3 +98,15 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 8. 检查图片 lightbox 和视频放大弹层是否高于 Agenda / topbar / progress，且弹层打开时不会误触发方向键翻页。
 9. 再检查 `?tone=champagne`、`?theme=visual`、`?tone=aurora`、`?theme=visual&tone=aurora` 是否仍可作为实验增强版打开。
 10. 任何新功能先保护默认主题，再考虑实验增强版。
+
+## 2026-06-25 Windows 设计增强落地
+
+- 已参考 `html-presentation-deck`、`ui-ux-pro-max` 和 `frontend-design` 做本轮 Design QA。
+- 已同步并推送 `html-presentation-deck` skill 到 `https://github.com/water-nn/html-presentation-deck-skill`，新增 `Equal Height Agenda Stage Rule`、`Media Lightbox Implementation Rule`、`Long Content Scrollable Card Example Rule`、`Outer Background Depth Rule`。
+- 已把 Agenda / stage / slide-frame 的垂直布局统一到 `--panel-gap`、`--deck-panel-top`、`--deck-panel-bottom`、`--deck-panel-height` 等共享 token。
+- 已确认 normal / pinned / simulated fullscreen viewport 下，`slide-frame` computed transform 为 `none`，不使用整体 `scale()` / `zoom` 作为主适配方案。
+- 已把第 9 页改成真实媒体展示页：图片使用真实 `img` 资源并支持 lightbox；视频使用本地 `public/media/agent-workflow-demo.webm`，支持播放、暂停、进度、音量和 modal 放大。
+- 已把第 12 页改成 4 张等高滚动卡片示例，第 2 张完整放入长文本，只在卡片内部滚动，页面级无滚动。
+- 已把外层背景进一步压深为 deep navy / blue-black，同时保留 cyan / violet / mint 光效和动态背景层。
+- 已运行 `npm run build` 并通过。
+- 已用本地 Vite + headless Chrome 验证：1366x768、1440x900、1920x1080 normal/pinned 均无页面级滚动；Agenda、stage、slide-frame 高度对齐；第 9 页图片/视频弹层阻止误翻页；第 12 页长卡片内部滚动；`?tone=champagne` 和 `?tone=aurora` 可打开且无 console error。
