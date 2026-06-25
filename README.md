@@ -211,3 +211,11 @@ src/styles.css
 src/deck/media/MediaPreview.tsx
 public/media/
 ```
+
+## 2026-06-25 交互和响应式修复
+
+本轮已把第 9 页媒体页和左侧 Agenda 从“看起来支持”改成真实可操作：Agenda 固定后右侧舞台使用剩余空间 `width: 100% / height: 100%` 回流，不再用整体缩放；长标题单行省略，hover / focus 时通过 body-level tooltip 显示完整标题，且不产生横向滚动条。
+
+媒体卡片现在使用 `MediaCard > Header > MediaViewport > Controls / Caption` 结构。图片 lightbox 和视频 modal 都是固定定位、居中、portal 到 `document.body` 的高层弹层，`Esc` 优先关闭弹层并阻止方向键误翻页。视频控制条包含播放/暂停、时间、进度、音量悬浮竖向滑杆、放大、More 菜单、下载、0.5x / 1x / 1.5x / 2x / 3x 倍速和 PiP fallback。
+
+本轮交互逻辑参考了 https://blac-t.github.io/Demo/ 的媒体页、图片放大和内部滚动思路，但没有复制其主题、内容或品牌风格。Design QA 继续参考本机 `ui-ux-pro-max` 与 `frontend-design`。
