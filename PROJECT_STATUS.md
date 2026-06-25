@@ -65,6 +65,9 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 
 ## 当前状态
 
+- 2026-06-25 公司 Windows 电脑已同步 GitHub 最新版 `html-presentation-deck` skill。
+- 当前主 skill 是 `html-presentation-deck`，companion design skills 是 `ui-ux-pro-max` 和 `frontend-design`，均已在 Windows 本机检测到。
+- 当前继续调试方向：外层背景继续保持 deep navy / blue black，内容显示区域保持更高，Pinned Agenda 坚持 responsive reflow，卡片 hover 保留，长内容卡片内部滚动，图片 / 视频媒体展示与 lightbox / modal。
 - 已把页面内容回正为“AI Agent 工作流发布会”主题。
 - 已把默认 tone 改为 `agent-lab`，无参数链接等价于 Original Agent Skill Lab Palette。
 - 已读取并参考早期项目 `/Users/water/Documents/系统操作/agent-skill-html-deck`，提取其 deep navy、cyan、violet、mint 和 hover 语言作为默认色彩母版。

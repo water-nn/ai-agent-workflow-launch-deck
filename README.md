@@ -175,6 +175,12 @@ PROJECT_STATUS.md
 
 它记录当前主题、稳定链接、默认视觉基线、六幕叙事结构和下一次接手建议。
 
+## Windows 同步状态
+
+2026-06-25，公司 Windows 电脑已同步 GitHub 最新版 `html-presentation-deck` skill，并确认本机存在 `ui-ux-pro-max` 与 `frontend-design`。后续继续以 `html-presentation-deck` 为主 skill，两个 companion design skills 用于 Design QA。
+
+当前继续调试方向保持不变：外层深蓝黑背景、16:9 内容显示区高度、Pinned Agenda responsive reflow、卡片 hover、长内容卡片内部滚动、图片 lightbox 和视频 modal。
+
 ## 导出 PDF
 
 打开本地预览或远程链接后，在浏览器里按 `Command + P` 或 `Ctrl + P`，选择“保存为 PDF”。建议横向打印，并关闭页眉页脚。

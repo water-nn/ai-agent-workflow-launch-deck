@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AI Agent deck icon">
+  <defs>
+    <radialGradient id="g" cx="30%" cy="24%" r="80%">
+      <stop offset="0%" stop-color="#38f8ff"/>
+      <stop offset="48%" stop-color="#5cc8ff"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="#050812"/>
+  <path d="M17 39.5 29.5 16h5L47 39.5h-6.2l-2.4-5H25.6l-2.4 5H17Zm11-10h8l-4-8.4-4 8.4Z" fill="url(#g)"/>
+  <path d="M19 46h26" stroke="#38f8ff" stroke-width="4" stroke-linecap="round" opacity=".72"/>
+</svg>
