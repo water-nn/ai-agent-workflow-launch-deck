@@ -1,4 +1,4 @@
-﻿import type { CSSProperties, KeyboardEvent as ReactKeyboardEvent, ReactNode, SyntheticEvent } from 'react'
+import type { CSSProperties, KeyboardEvent as ReactKeyboardEvent, ReactNode, SyntheticEvent } from 'react'
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
@@ -16,6 +16,8 @@ type MediaVideoProps = {
   src: string
   poster?: string
 }
+
+type IconName = 'play' | 'pause' | 'volume' | 'muted' | 'expand' | 'more' | 'download' | 'pip' | 'close'
 
 type VideoControlsProps = {
   title: string
@@ -37,6 +39,133 @@ type VideoControlsProps = {
 
 type PiPVideoElement = HTMLVideoElement & {
   requestPictureInPicture?: () => Promise<unknown>
+}
+
+const getModalRoot = () => document.getElementById('deck-modal-root') ?? document.querySelector('.deck-app') ?? document.body
+
+function Icon({ name }: { name: IconName }) {
+  const common = {
+    className: 'video-control-icon',
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 1.8,
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const,
+    'aria-hidden': true,
+  }
+
+  if (name === 'play') {
+    return (
+      <svg {...common}>
+        <path d="M8.5 5.5v13l10-6.5-10-6.5Z" fill="currentColor" stroke="none" />
+      </svg>
+    )
+  }
+
+  if (name === 'pause') {
+    return (
+      <svg {...common}>
+        <path d="M8 6.5v11" />
+        <path d="M16 6.5v11" />
+      </svg>
+    )
+  }
+
+  if (name === 'volume' || name === 'muted') {
+    return (
+      <svg {...common}>
+        <path d="M4.5 9.5v5h3.2l4.3 3.4V6.1L7.7 9.5H4.5Z" />
+        {name === 'volume' ? (
+          <>
+            <path d="M15.3 9.2a4.2 4.2 0 0 1 0 5.6" />
+            <path d="M17.8 6.7a7.8 7.8 0 0 1 0 10.6" />
+          </>
+        ) : (
+          <>
+            <path d="m16 9 4 4" />
+            <path d="m20 9-4 4" />
+          </>
+        )}
+      </svg>
+    )
+  }
+
+  if (name === 'expand') {
+    return (
+      <svg {...common}>
+        <path d="M8.5 4.5H4.5v4" />
+        <path d="M15.5 4.5h4v4" />
+        <path d="M19.5 15.5v4h-4" />
+        <path d="M4.5 15.5v4h4" />
+        <path d="M9 4.5 4.5 9" />
+        <path d="m15 4.5 4.5 4.5" />
+        <path d="m19.5 15-4.5 4.5" />
+        <path d="m4.5 15 4.5 4.5" />
+      </svg>
+    )
+  }
+
+  if (name === 'more') {
+    return (
+      <svg {...common}>
+        <circle cx="6" cy="12" r="1.25" fill="currentColor" stroke="none" />
+        <circle cx="12" cy="12" r="1.25" fill="currentColor" stroke="none" />
+        <circle cx="18" cy="12" r="1.25" fill="currentColor" stroke="none" />
+      </svg>
+    )
+  }
+
+  if (name === 'download') {
+    return (
+      <svg {...common}>
+        <path d="M12 4.5v9" />
+        <path d="m8.2 10.4 3.8 3.8 3.8-3.8" />
+        <path d="M5 18.5h14" />
+      </svg>
+    )
+  }
+
+  if (name === 'pip') {
+    return (
+      <svg {...common}>
+        <rect x="4" y="6" width="16" height="12" rx="2" />
+        <rect x="12.5" y="11" width="5" height="3.8" rx="0.8" />
+      </svg>
+    )
+  }
+
+  return (
+    <svg {...common}>
+      <path d="M6.5 6.5 17.5 17.5" />
+      <path d="M17.5 6.5 6.5 17.5" />
+    </svg>
+  )
+}
+
+function IconButton({
+  label,
+  icon,
+  onClick,
+  expanded,
+}: {
+  label: string
+  icon: IconName
+  onClick?: () => void
+  expanded?: boolean
+}) {
+  return (
+    <button
+      className="video-icon-button video-control-button"
+      type="button"
+      aria-label={label}
+      title={label}
+      aria-expanded={expanded}
+      onClick={onClick}
+    >
+      <Icon name={icon} />
+    </button>
+  )
 }
 
 function useMediaModal(open: boolean, onClose: () => void) {
@@ -77,6 +206,14 @@ const formatTime = (value: number) => {
 
 const clampVolume = (value: number) => Math.min(Math.max(value, 0), 1)
 
+const speedLabels = new Map([
+  [0.5, '0.5x 慢速'],
+  [1, '1x 正常'],
+  [1.5, '1.5x 快速'],
+  [2, '2x 更快'],
+  [3, '3x 极快'],
+])
+
 function VideoControls({
   title,
   src,
@@ -99,12 +236,11 @@ function VideoControls({
   const progress = safeDuration ? Math.min((currentTime / safeDuration) * 100, 100) : 0
   const volumePercent = Math.round(volume * 100)
   const speeds = [0.5, 1, 1.5, 2, 3]
+  const volumeLabel = volume === 0 ? '已静音' : `音量 ${volumePercent}%`
 
   return (
     <div className="video-control-bar" aria-label={`${title} 播放控制`}>
-      <button className="video-icon-button" type="button" onClick={onTogglePlay} aria-label={isPlaying ? '暂停视频' : '播放视频'}>
-        {isPlaying ? 'Pause' : 'Play'}
-      </button>
+      <IconButton label={isPlaying ? '暂停' : '播放'} icon={isPlaying ? 'pause' : 'play'} onClick={onTogglePlay} />
 
       <div className="video-time-block" aria-label="播放时间">
         <span>{formatTime(currentTime)}</span>
@@ -116,23 +252,24 @@ function VideoControls({
         <span className="sr-only">视频进度</span>
         <input
           aria-label="视频进度"
+          title="视频进度"
           min="0"
           max={safeDuration || 1}
           step="0.01"
           type="range"
           value={Math.min(currentTime, safeDuration || 1)}
-          style={{ '--video-progress': `${progress}%` } as React.CSSProperties}
+          style={{ '--video-progress': `${progress}%` } as CSSProperties}
           onChange={(event) => onSeek(Number(event.target.value))}
         />
       </label>
 
       <div className="video-volume-control">
-        <button className="video-icon-button" type="button" aria-label={`音量 ${volumePercent}%`}>
-          Vol
-        </button>
-        <div className="video-volume-popover" aria-label="音量滑杆">
+        <IconButton label={volumeLabel} icon={volume === 0 ? 'muted' : 'volume'} />
+        <div className="video-volume-popover" aria-label="音量调节">
           <input
+            className="video-volume-slider"
             aria-label="视频音量"
+            title="视频音量"
             min="0"
             max="1"
             step="0.01"
@@ -144,35 +281,44 @@ function VideoControls({
         </div>
       </div>
 
-      {canOpen ? (
-        <button className="video-icon-button" type="button" onClick={onOpen} aria-label={`${title}，放大视频`}>
-          Max
-        </button>
-      ) : null}
+      {canOpen ? <IconButton label="放大视频" icon="expand" onClick={onOpen} /> : null}
 
-      <div className="video-more-control">
+      <div
+        className="video-more-control"
+        onPointerEnter={() => setIsMenuOpen(true)}
+        onPointerLeave={() => setIsMenuOpen(false)}
+        onFocusCapture={() => setIsMenuOpen(true)}
+        onBlurCapture={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setIsMenuOpen(false)
+        }}
+      >
         <button
-          className="video-icon-button"
+          className="video-icon-button video-control-button"
           type="button"
+          aria-label="更多选项"
+          title="更多选项"
           aria-expanded={isMenuOpen}
           aria-haspopup="menu"
-          onClick={() => setIsMenuOpen((value) => !value)}
+          onClick={() => setIsMenuOpen(true)}
         >
-          More
+          <Icon name="more" />
         </button>
         {isMenuOpen ? (
           <div className="video-more-menu" role="menu">
-            <a className="video-menu-item" href={src} download role="menuitem">
-              Download video
+            <a className="video-menu-item" href={src} download role="menuitem" title="下载视频">
+              <Icon name="download" />
+              <span>下载视频</span>
             </a>
             <div className="video-menu-group" aria-label="播放速度">
-              <span>Speed</span>
+              <span>播放速度：{speedLabels.get(speed) ?? `${speed}x`}</span>
               <div className="video-speed-list">
                 {speeds.map((value) => (
                   <button
                     className={`video-menu-item video-speed-item ${speed === value ? 'video-speed-active' : ''}`}
                     type="button"
                     role="menuitemradio"
+                    aria-label={`切换到${speedLabels.get(value)}`}
+                    title={speedLabels.get(value)}
                     aria-checked={speed === value}
                     key={value}
                     onClick={() => {
@@ -180,13 +326,14 @@ function VideoControls({
                       setIsMenuOpen(false)
                     }}
                   >
-                    {value}x
+                    {speedLabels.get(value)}
                   </button>
                 ))}
               </div>
             </div>
-            <button className="video-menu-item" type="button" role="menuitem" onClick={onPiP}>
-              Picture in Picture
+            <button className="video-menu-item" type="button" role="menuitem" title="画中画" onClick={onPiP}>
+              <Icon name="pip" />
+              <span>画中画</span>
             </button>
             {pipStatus ? <p className="video-menu-status">{pipStatus}</p> : null}
           </div>
@@ -217,12 +364,12 @@ function ModalShell({
         if (event.target === event.currentTarget) onClose()
       }}
     >
-      <button ref={closeRef} className="media-modal-close" type="button" aria-label="关闭媒体预览" onClick={onClose}>
-        Close
+      <button ref={closeRef} className="media-modal-close" type="button" aria-label="关闭" title="关闭" onClick={onClose}>
+        <Icon name="close" />
       </button>
       {children}
     </div>,
-    document.body,
+    getModalRoot(),
   )
 }
 
@@ -237,9 +384,9 @@ export function MediaImage({ title, caption, alt, src, fit = 'contain' }: MediaI
       <div className="media-card-head">
         <strong>{title}</strong>
       </div>
-      <button className={`media-viewport media-frame-${fit}`} type="button" onClick={() => setIsOpen(true)} aria-label={`${title}，点击放大`}>
+      <button className={`media-viewport media-frame-${fit}`} type="button" onClick={() => setIsOpen(true)} aria-label={`${title}，点击放大`} title="点击放大">
         <img className="media-image" src={src} alt={alt} loading="lazy" />
-        <span className="media-open-badge">Click to inspect</span>
+        <span className="media-open-badge">点击放大</span>
       </button>
       <div className="media-copy">
         <p>{caption}</p>
@@ -363,14 +510,14 @@ export function MediaVideo({ title, caption, src, poster }: MediaVideoProps) {
   const requestPiP = async () => {
     const video = getActiveVideo() as PiPVideoElement | null
     if (!video || !video.requestPictureInPicture) {
-      setPipStatus('This browser does not support PiP here.')
+      setPipStatus('当前浏览器不支持画中画。')
       return
     }
     try {
       await video.requestPictureInPicture()
-      setPipStatus('PiP opened.')
+      setPipStatus('已打开画中画。')
     } catch {
-      setPipStatus('PiP was blocked by the browser.')
+      setPipStatus('画中画被浏览器拦截。')
     }
   }
 
@@ -385,7 +532,7 @@ export function MediaVideo({ title, caption, src, poster }: MediaVideoProps) {
   const handleViewportKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault()
-      togglePlay()
+      openModal()
     }
   }
 
@@ -414,9 +561,17 @@ export function MediaVideo({ title, caption, src, poster }: MediaVideoProps) {
       <div className="media-card-head">
         <strong>{title}</strong>
       </div>
-      <div className="media-viewport media-frame-contain" role="button" tabIndex={0} aria-label={`${title}，按回车播放或暂停`} onKeyDown={handleViewportKeyDown}>
+      <div
+        className="media-viewport media-frame-contain"
+        role="button"
+        tabIndex={0}
+        aria-label={`${title}，点击放大预览`}
+        title="点击放大预览"
+        onClick={openModal}
+        onKeyDown={handleViewportKeyDown}
+      >
         <video ref={previewRef} className="media-video" src={src} poster={poster} preload="metadata" playsInline {...videoEvents} />
-        <span className="media-video-badge">{isPlaying && !isOpen ? 'Playing workflow preview' : 'Paused deck preview'}</span>
+        <span className="media-video-badge">{isPlaying && !isOpen ? '正在播放预览' : '预览已暂停'}</span>
       </div>
       {controls(true)}
       <div className="media-copy">
@@ -430,7 +585,7 @@ export function MediaVideo({ title, caption, src, poster }: MediaVideoProps) {
             </div>
             <div className="media-modal-media media-modal-video-shell">
               <video ref={modalRef} className="media-video media-video-modal" src={src} poster={poster} preload="metadata" playsInline {...videoEvents} />
-              <span className="media-video-badge">{isPlaying && isOpen ? 'Playing enlarged preview' : 'Paused enlarged preview'}</span>
+              <span className="media-video-badge">{isPlaying && isOpen ? '正在播放放大预览' : '放大预览已暂停'}</span>
             </div>
             {controls(false)}
           </div>
@@ -439,5 +594,3 @@ export function MediaVideo({ title, caption, src, poster }: MediaVideoProps) {
     </article>
   )
 }
-
-

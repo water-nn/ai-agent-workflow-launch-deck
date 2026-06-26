@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { buildChartTooltip, ChartTooltip, type ChartTooltipState } from './ChartTooltip'
 
 type Point = {
   label: string
@@ -13,6 +14,7 @@ type LineChartBlockProps = {
 
 export function LineChartBlock({ title, points, suffix = '%' }: LineChartBlockProps) {
   const [entered, setEntered] = useState(false)
+  const [tooltip, setTooltip] = useState<ChartTooltipState>(null)
   const max = Math.max(...points.map((point) => point.value), 100)
   const width = 720
   const height = 280
@@ -60,7 +62,31 @@ export function LineChartBlock({ title, points, suffix = '%' }: LineChartBlockPr
         })}
         <path d={path} className="line-chart-path" pathLength="1" />
         {coordinates.map((point) => (
-          <g key={point.label}>
+          <g
+            key={point.label}
+            className="line-chart-point"
+            onMouseEnter={(event) =>
+              setTooltip(
+                buildChartTooltip(event, {
+                  label: point.label,
+                  series: '趋势值',
+                  value: `${point.value}${suffix}`,
+                  color: 'var(--chart-color-2)',
+                }),
+              )
+            }
+            onMouseMove={(event) =>
+              setTooltip(
+                buildChartTooltip(event, {
+                  label: point.label,
+                  series: '趋势值',
+                  value: `${point.value}${suffix}`,
+                  color: 'var(--chart-color-2)',
+                }),
+              )
+            }
+            onMouseLeave={() => setTooltip(null)}
+          >
             <circle cx={point.x} cy={point.y} r="8" className="line-chart-dot" />
             <text x={point.x} y={point.y - 16} textAnchor="middle" className="chart-value-label">
               {point.value}
@@ -72,6 +98,7 @@ export function LineChartBlock({ title, points, suffix = '%' }: LineChartBlockPr
           </g>
         ))}
       </svg>
+      <ChartTooltip tooltip={tooltip} />
     </article>
   )
 }

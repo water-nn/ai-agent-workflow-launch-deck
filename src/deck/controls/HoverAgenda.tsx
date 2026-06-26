@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { Slide } from '../types'
 
@@ -75,7 +75,6 @@ export function HoverAgenda({ slides, currentIndex, isPinned, onPinnedChange, on
                   className={`agenda-item ${index === currentIndex ? 'agenda-item-active' : ''}`}
                   type="button"
                   key={slide.id}
-                  title={label}
                   aria-label={`跳转到第 ${index + 1} 页：${label}`}
                   onPointerEnter={(event) => showTooltip(event, label)}
                   onPointerMove={(event) => showTooltip(event, label)}

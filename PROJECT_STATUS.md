@@ -118,8 +118,24 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 - 已修复固定 Agenda 后右侧舞台宽度适配：`.deck-stage` / `.slide-frame` 使用剩余空间 `width: 100%`、`height: 100%`，computed transform 为 `none`。
 - 已修复 Agenda 横向滚动：`agenda-panel` / `agenda-items` / `agenda-item` 使用 `min-width: 0`、ellipsis、`overflow-x` final guard；长标题通过 body-level tooltip 展示完整文案。
 - 已建立卡片安全内边距 token：`--card-padding-sm`、`--card-padding-md`、`--card-padding-lg`、`--card-content-gap`。
-- 已重构 `MediaPreview.tsx`：图片 lightbox 和视频 modal 均 portal 到 `document.body`，`position: fixed`，`z-index: 9999`，居中显示，支持 overlay / Close / Esc 关闭，并阻止方向键误翻页。
+- 已重构 `MediaPreview.tsx`：图片 lightbox 和视频 modal 均渲染到 `.deck-app` 内的 `#deck-modal-root`，`position: fixed`，`z-index: 99999`，居中显示，支持 overlay / close icon / Esc 关闭，并阻止方向键误翻页。
 - 已增强视频控件：播放/暂停、当前/总时长、进度条、音量悬浮竖向滑杆、放大 modal、More 菜单、下载、0.5x / 1x / 1.5x / 2x / 3x 倍速、PiP fallback。倍速会真实更新 `playbackRate`。
-- 已用本地 Vite + Chrome DevTools Protocol 验证：1440x900 与 1920x1080 下舞台宽度填满、无整体缩放、Agenda 无横向滚动、tooltip 存在且 z-index 10000、媒体卡片等高、图片/视频 contain、image modal body portal、video modal body portal、2x 倍速生效、PiP 被浏览器拦截时显示 fallback。
+- 已用本地 Vite + Chrome DevTools Protocol 验证：1440x900 与 1920x1080 下舞台宽度填满、无整体缩放、Agenda 无横向滚动、tooltip 存在且 z-index 10000、媒体卡片等高、图片/视频 contain、image modal / video modal 位于 `#deck-modal-root`、2x 倍速生效、PiP 被浏览器拦截时显示 fallback。
 - 已运行 `npm run build` 并通过。
 - 后续仍建议人工打开远程链接做最终视觉 QA，尤其检查现场演讲距离下标题大小、媒体页信息密度和视频 More 菜单位置。
+
+## 2026-06-26 Fullscreen media modal, icon video controls, chart tooltip fix
+
+- 本轮继续使用 `html-presentation-deck` 作为主 skill，并参考本机 `ui-ux-pro-max` 与 `frontend-design` 做 Design QA。
+- 已把 `html-presentation-deck` skill 同步新增规则：`Fullscreen Media Modal Rule`、`Video Controls Popover Rule`、`Video Controls Icon Rule`、`Single Agenda Tooltip Rule`、`Scroll Fade Mask Quality Rule`、`Slide Header Width Rule`、`Chart Tooltip Interaction Rule`、`Deeper Page Background Rule`。
+- 第 9 页图片 lightbox 现在渲染到 `.deck-app` 内的 `#deck-modal-root`，普通窗口与全屏上下文都应保持居中，层级高于 Agenda / topbar / progress。
+- 视频控制栏已 icon 化并中文化：不再显示 `Play / Pause / Vol / Max / More / Close / Download / Speed / PiP` 等英文按钮文字；icon 按钮保留 `aria-label` 和 `title`。
+- More 菜单 hover / focus 向上浮出，中文显示下载、播放速度、倍速和画中画。
+- 音量控件 hover / focus 时显示一体化竖向 slider popover。
+- 图片 / 视频 modal 关闭按钮改为 icon close，`aria-label="关闭"`，`title="关闭"`。
+- Agenda item 已移除原生 `title`，避免与自定义 tooltip 叠加成双 tooltip。
+- 第 12 页滚动卡片 fade mask 改为克制主题色渐变，避免黑色硬矩形。
+- slide header 与结尾大标题放宽到内容宽度，避免过窄换行。
+- 图表组件新增轻量 hover tooltip：bar、horizontal bar、line point、donut segment 都可显示标签、系列和值。
+- 外层 HTML / body / root 背景继续加深为 deep navy / blue-black。
+- 本轮本地 Chrome 验证结果：第 9 页英文按钮文字为空、视频按钮均有中文 aria/title、图片 modal 居中且图片在 panel 内、视频 modal 居中且关闭后暂停、More 菜单中文、Agenda tooltip 只有一个、图表 tooltip 存在、页面无 console error。

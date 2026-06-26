@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { buildChartTooltip, ChartTooltip, type ChartTooltipState } from './ChartTooltip'
 
 type DonutDatum = {
   label: string
@@ -24,6 +25,7 @@ const defaultPalette = [
 export function DonutChartBlock({ title, data }: DonutChartBlockProps) {
   let offset = 0
   const [entered, setEntered] = useState(false)
+  const [tooltip, setTooltip] = useState<ChartTooltipState>(null)
 
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -59,6 +61,27 @@ export function DonutChartBlock({ title, data }: DonutChartBlockProps) {
                 stroke={color}
                 strokeDasharray={dash}
                 strokeDashoffset={-offset}
+                onMouseEnter={(event) =>
+                  setTooltip(
+                    buildChartTooltip(event, {
+                      label: item.label,
+                      series: '能力覆盖',
+                      value: `${item.value}%`,
+                      color,
+                    }),
+                  )
+                }
+                onMouseMove={(event) =>
+                  setTooltip(
+                    buildChartTooltip(event, {
+                      label: item.label,
+                      series: '能力覆盖',
+                      value: `${item.value}%`,
+                      color,
+                    }),
+                  )
+                }
+                onMouseLeave={() => setTooltip(null)}
               />
             )
             offset += item.value
@@ -81,6 +104,7 @@ export function DonutChartBlock({ title, data }: DonutChartBlockProps) {
           ))}
         </div>
       </div>
+      <ChartTooltip tooltip={tooltip} />
     </article>
   )
 }

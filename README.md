@@ -216,6 +216,35 @@ public/media/
 
 本轮已把第 9 页媒体页和左侧 Agenda 从“看起来支持”改成真实可操作：Agenda 固定后右侧舞台使用剩余空间 `width: 100% / height: 100%` 回流，不再用整体缩放；长标题单行省略，hover / focus 时通过 body-level tooltip 显示完整标题，且不产生横向滚动条。
 
-媒体卡片现在使用 `MediaCard > Header > MediaViewport > Controls / Caption` 结构。图片 lightbox 和视频 modal 都是固定定位、居中、portal 到 `document.body` 的高层弹层，`Esc` 优先关闭弹层并阻止方向键误翻页。视频控制条包含播放/暂停、时间、进度、音量悬浮竖向滑杆、放大、More 菜单、下载、0.5x / 1x / 1.5x / 2x / 3x 倍速和 PiP fallback。
+媒体卡片现在使用 `MediaCard > Header > MediaViewport > Controls / Caption` 结构。图片 lightbox 和视频 modal 都是固定定位、居中、渲染到 `.deck-app` 内 `#deck-modal-root` 的高层弹层，`Esc` 优先关闭弹层并阻止方向键误翻页。视频控制条包含播放/暂停、时间、进度、音量悬浮竖向滑杆、放大、More 菜单、下载、0.5x / 1x / 1.5x / 2x / 3x 倍速和 PiP fallback。
 
 本轮交互逻辑参考了 https://blac-t.github.io/Demo/ 的媒体页、图片放大和内部滚动思路，但没有复制其主题、内容或品牌风格。Design QA 继续参考本机 `ui-ux-pro-max` 与 `frontend-design`。
+
+## 2026-06-26 媒体弹窗、视频控件与图表交互修复
+
+本轮继续按 `html-presentation-deck` 主规则，并参考本机 `ui-ux-pro-max` 与 `frontend-design` 做 Design QA。
+
+已落地的源码修复：
+
+- 第 9 页图片 lightbox 改为渲染到 `.deck-app` 内的 `#deck-modal-root`，在普通窗口和全屏上下文中都保持真正居中，层级高于 Agenda、topbar 和进度条。
+- 视频控制栏统一改成 icon 按钮，播放、暂停、音量、放大、更多、关闭、下载、画中画都不再显示 `Play / Pause / Vol / Max / More / Close / Download / PiP` 等英文按钮文字。
+- icon 按钮保留 `aria-label` 与 `title`，More 菜单内容中文化，倍速项显示为 `0.5x 慢速 / 1x 正常 / 1.5x 快速 / 2x 更快 / 3x 极快`。
+- 音量 hover/focus 后显示一体化竖向滑杆 popover，滑杆和背景容器不再分离。
+- Agenda 项移除了原生 `title`，只保留自定义 tooltip，避免双 tooltip。
+- 第 12 页滚动卡片底部 fade 改为克制的主题色渐变，避免 hover 后出现黑色硬矩形。
+- slide header、结尾大标题和 statement 标题使用舞台内容宽度，减少过窄换行。
+- 柱状图、横向条形图、折线点、环形图 segment 增加轻量 hover value tooltip。
+- 外层 `html / body / #root / .deck-app` 背景进一步压深为 deep navy / blue-black，避免浏览器边缘发灰。
+
+以后如果只改内容，仍然优先修改：
+
+```text
+src/slides.tsx
+```
+
+如果要改第 9 页媒体交互或视频控制栏，再看：
+
+```text
+src/deck/media/MediaPreview.tsx
+src/styles.css
+```

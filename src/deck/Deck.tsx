@@ -51,6 +51,7 @@ export function Deck({ slides }: DeckProps) {
         <SlideFrame key={currentSlide.id} slide={currentSlide} index={navigation.currentIndex} total={slides.length} />
       </div>
       <Progress currentIndex={navigation.currentIndex} total={slides.length} />
+      <div id="deck-modal-root" className="deck-modal-root" />
     </main>
   )
 }

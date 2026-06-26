@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { buildChartTooltip, ChartTooltip, type ChartTooltipState } from './ChartTooltip'
 
 type BarDatum = {
   label: string
@@ -15,6 +16,7 @@ type BarChartBlockProps = {
 export function BarChartBlock({ title, data }: BarChartBlockProps) {
   const max = Math.max(...data.flatMap((item) => [item.traditional, item.agent]))
   const [entered, setEntered] = useState(false)
+  const [tooltip, setTooltip] = useState<ChartTooltipState>(null)
 
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -45,11 +47,56 @@ export function BarChartBlock({ title, data }: BarChartBlockProps) {
               <span
                 className="bar bar-traditional"
                 style={{ width: entered ? `${(item.traditional / max) * 100}%` : '0%' }}
+                onMouseEnter={(event) =>
+                  setTooltip(
+                    buildChartTooltip(event, {
+                      label: item.label,
+                      series: '传统流程',
+                      value: `${item.traditional}${item.unit ?? ''}`,
+                      color: 'var(--chart-neutral)',
+                    }),
+                  )
+                }
+                onMouseMove={(event) =>
+                  setTooltip(
+                    buildChartTooltip(event, {
+                      label: item.label,
+                      series: '传统流程',
+                      value: `${item.traditional}${item.unit ?? ''}`,
+                      color: 'var(--chart-neutral)',
+                    }),
+                  )
+                }
+                onMouseLeave={() => setTooltip(null)}
               >
                 {item.traditional}
                 {item.unit}
               </span>
-              <span className="bar bar-agent" style={{ width: entered ? `${(item.agent / max) * 100}%` : '0%' }}>
+              <span
+                className="bar bar-agent"
+                style={{ width: entered ? `${(item.agent / max) * 100}%` : '0%' }}
+                onMouseEnter={(event) =>
+                  setTooltip(
+                    buildChartTooltip(event, {
+                      label: item.label,
+                      series: 'Agent 工作流',
+                      value: `${item.agent}${item.unit ?? ''}`,
+                      color: 'var(--chart-color-1)',
+                    }),
+                  )
+                }
+                onMouseMove={(event) =>
+                  setTooltip(
+                    buildChartTooltip(event, {
+                      label: item.label,
+                      series: 'Agent 工作流',
+                      value: `${item.agent}${item.unit ?? ''}`,
+                      color: 'var(--chart-color-1)',
+                    }),
+                  )
+                }
+                onMouseLeave={() => setTooltip(null)}
+              >
                 {item.agent}
                 {item.unit}
               </span>
@@ -57,6 +104,7 @@ export function BarChartBlock({ title, data }: BarChartBlockProps) {
           </div>
         ))}
       </div>
+      <ChartTooltip tooltip={tooltip} />
     </article>
   )
 }
