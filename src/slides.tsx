@@ -230,7 +230,7 @@ export const slides: Slide[] = [
             src={mediaImageSrc}
           />
           <MediaVideo
-            title="Workflow recording"
+            title="工作流录屏"
             caption="右侧示例用于产品录屏或交互视频：可播放、暂停、拖动进度、调节音量，并放大到 modal。"
             src={mediaVideoSrc}
             poster={mediaVideoPoster}

@@ -248,3 +248,28 @@ src/slides.tsx
 src/deck/media/MediaPreview.tsx
 src/styles.css
 ```
+
+## 2026-06-26 视觉与交互增强记录
+
+本轮继续按 `html-presentation-deck` 标准执行，并参考本机 `ui-ux-pro-max`、`frontend-design` 做 Design QA。重点不是重做整套页面，而是修复演示场景里容易显得粗糙的细节：
+
+- 折线图绘图区增加安全内边距，第一组数据点不再贴住或压住 Y 轴标签。
+- Agenda item 增加安全 padding，hover / active / focus-visible 状态不裁切、不产生横向滚动。
+- 图表卡片、媒体卡片标题区改为上下堆叠，标题和说明不会被强行挤在一行。
+- 第 12 页长内容卡片底部 fade 改为克制主题色渐变，hover 时不再出现黑色硬矩形。
+- 第 9 页视频控制栏移入视频画面底部，使用玻璃 overlay，并保持 icon 化、中文化、可访问性标签。
+- 图表、Agenda、卡片、媒体控件统一使用更克制的 dark glass / gradient / blur token。
+
+以后只改文案内容，仍然优先修改：
+
+```text
+src/slides.tsx
+```
+
+如果要继续调整图表、媒体或视觉细节，再看：
+
+```text
+src/deck/charts/
+src/deck/media/MediaPreview.tsx
+src/styles.css
+```

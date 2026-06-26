@@ -537,23 +537,25 @@ export function MediaVideo({ title, caption, src, poster }: MediaVideoProps) {
   }
 
   const controls = (canOpen: boolean) => (
-    <VideoControls
-      title={title}
-      src={src}
-      isPlaying={isPlaying}
-      currentTime={currentTime}
-      duration={duration}
-      volume={volume}
-      speed={speed}
-      pipStatus={pipStatus}
-      canOpen={canOpen}
-      onTogglePlay={togglePlay}
-      onSeek={seek}
-      onVolume={changeVolume}
-      onSpeed={changeSpeed}
-      onOpen={openModal}
-      onPiP={requestPiP}
-    />
+    <div className="video-controls-overlay" onClick={(event) => event.stopPropagation()} onMouseDown={(event) => event.stopPropagation()}>
+      <VideoControls
+        title={title}
+        src={src}
+        isPlaying={isPlaying}
+        currentTime={currentTime}
+        duration={duration}
+        volume={volume}
+        speed={speed}
+        pipStatus={pipStatus}
+        canOpen={canOpen}
+        onTogglePlay={togglePlay}
+        onSeek={seek}
+        onVolume={changeVolume}
+        onSpeed={changeSpeed}
+        onOpen={openModal}
+        onPiP={requestPiP}
+      />
+    </div>
   )
 
   return (
@@ -571,9 +573,9 @@ export function MediaVideo({ title, caption, src, poster }: MediaVideoProps) {
         onKeyDown={handleViewportKeyDown}
       >
         <video ref={previewRef} className="media-video" src={src} poster={poster} preload="metadata" playsInline {...videoEvents} />
+        {controls(true)}
         <span className="media-video-badge">{isPlaying && !isOpen ? '正在播放预览' : '预览已暂停'}</span>
       </div>
-      {controls(true)}
       <div className="media-copy">
         <p>{caption}</p>
       </div>
@@ -585,9 +587,9 @@ export function MediaVideo({ title, caption, src, poster }: MediaVideoProps) {
             </div>
             <div className="media-modal-media media-modal-video-shell">
               <video ref={modalRef} className="media-video media-video-modal" src={src} poster={poster} preload="metadata" playsInline {...videoEvents} />
+              {controls(false)}
               <span className="media-video-badge">{isPlaying && isOpen ? '正在播放放大预览' : '放大预览已暂停'}</span>
             </div>
-            {controls(false)}
           </div>
         </ModalShell>
       ) : null}

@@ -139,3 +139,16 @@ https://water-nn.github.io/ai-agent-workflow-launch-deck/
 - 图表组件新增轻量 hover tooltip：bar、horizontal bar、line point、donut segment 都可显示标签、系列和值。
 - 外层 HTML / body / root 背景继续加深为 deep navy / blue-black。
 - 本轮本地 Chrome 验证结果：第 9 页英文按钮文字为空、视频按钮均有中文 aria/title、图片 modal 居中且图片在 panel 内、视频 modal 居中且关闭后暂停、More 菜单中文、Agenda tooltip 只有一个、图表 tooltip 存在、页面无 console error。
+
+## 2026-06-26 Chart padding, Agenda spacing, video overlay and premium glass pass
+
+- 本轮继续使用 `html-presentation-deck` 作为主规则，并参考本机 `ui-ux-pro-max` 与 `frontend-design` 做 Design QA。
+- 已修复折线图绘图区安全内边距：Y 轴标签区和第一组数据点之间保留独立 left padding，避免第一个数据点、数值标签或折线路径压住 Y 轴文字。
+- 已调整图表 tooltip 的坐标约束：tooltip 不再依赖负向 transform，而是在图表容器内按预估宽高 clamp，减少贴边、遮挡和溢出。
+- 已补充图表、Agenda、卡片和媒体区域的统一 glass token：`--glass-bg`、`--glass-border`、`--glass-shadow`、`--surface-gradient` 等，用于维持深色科技发布会质感。
+- 已修复 Agenda item 安全内边距：hover / active / focus-visible 状态不会被面板边缘裁切，也不会出现横向滚动条。
+- 已将图表卡片和媒体卡片标题区默认改为上下堆叠：标题、说明、legend 不再被强行挤在同一行，避免窄宽度下标题被压缩。
+- 已修复第 12 页长内容卡片 hover 后底部黑色硬矩形：普通 scrollable card 不再显示硬 fade，长卡片只保留低透明主题色渐变。
+- 已将第 9 页视频控制栏移入视频画面底部 overlay：控制栏覆盖在视频底部，使用半透明玻璃背景，并阻止点击控制栏时误触发打开 modal。
+- 已增加视频卡片和 modal 视频区域的安全高度与 overlay 层级，确保控制栏、音量 popover、More 菜单不被媒体卡片裁切。
+- 后续如果改图表布局，优先检查 `src/deck/charts/LineChartBlock.tsx` 与 `src/styles.css` 的 chart padding；如果改视频交互，优先检查 `src/deck/media/MediaPreview.tsx` 和 `src/styles.css`。

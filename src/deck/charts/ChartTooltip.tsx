@@ -10,6 +10,8 @@ export type ChartTooltipState = {
 } | null
 
 const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max)
+const tooltipWidth = 176
+const tooltipHeight = 92
 
 export function buildChartTooltip(
   event: MouseEvent<Element>,
@@ -17,8 +19,8 @@ export function buildChartTooltip(
 ): NonNullable<ChartTooltipState> {
   const card = event.currentTarget.closest('.chart-card') as HTMLElement | null
   const rect = card?.getBoundingClientRect()
-  const x = rect ? clamp(event.clientX - rect.left + 14, 12, Math.max(12, rect.width - 220)) : 18
-  const y = rect ? clamp(event.clientY - rect.top - 18, 12, Math.max(12, rect.height - 96)) : 18
+  const x = rect ? clamp(event.clientX - rect.left + 16, 14, Math.max(14, rect.width - tooltipWidth - 14)) : 18
+  const y = rect ? clamp(event.clientY - rect.top - tooltipHeight - 12, 14, Math.max(14, rect.height - tooltipHeight - 14)) : 18
   return { ...payload, x, y }
 }
 
